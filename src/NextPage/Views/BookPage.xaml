@@ -7,5 +7,72 @@
     xmlns:resources="clr-namespace:NextPage.Properties"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:NextPage.ViewModels"
+    Title="{Binding Title}"
     x:DataType="vm:BookPageViewModel"
-    BindingContext="{burkus:ResolveBindingContext x:TypeArguments=vm:BookPageViewModel}" />
+    BindingContext="{burkus:ResolveBindingContext x:TypeArguments=vm:BookPageViewModel}">
+    <ContentPage.Resources>
+        <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        <Style
+            x:Key="PropertyLabelStyle"
+            TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+    </ContentPage.Resources>
+    <VerticalStackLayout
+        Margin="{StaticResource StandardThicknessUnit}"
+        Spacing="{StaticResource StandardThicknessUnit}">
+        <Label
+            Style="{StaticResource PropertyLabelStyle}"
+            Text="{x:Static resources:Resources.Title}" />
+        <Entry
+            IsVisible="{Binding IsEditing}"
+            MaxLength="100"
+            Text="{Binding Book.Title}" />
+        <Label
+            IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+            Text="{Binding Book.Title}" />
+
+        <Label
+            Style="{StaticResource PropertyLabelStyle}"
+            Text="{x:Static resources:Resources.Author}" />
+        <Entry
+            IsVisible="{Binding IsEditing}"
+            MaxLength="100"
+            Text="{Binding Book.Author}" />
+        <Label
+            IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+            Text="{Binding Book.Author}" />
+
+        <Label
+            Style="{StaticResource PropertyLabelStyle}"
+            Text="{x:Static resources:Resources.Genre}" />
+        <Picker IsVisible="{Binding IsEditing}" />
+        <Label
+            IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+            Text="{Binding Book.Genre}" />
+
+        <Label
+            Style="{StaticResource PropertyLabelStyle}"
+            Text="{x:Static resources:Resources.PublicationYear}" />
+        <Entry
+            IsVisible="{Binding IsEditing}"
+            Keyboard="Numeric"
+            MaxLength="4"
+            Text="{Binding Book.Year}" />
+        <Label
+            IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+            Text="{Binding Book.Year}" />
+
+        <Label
+            Style="{StaticResource PropertyLabelStyle}"
+            Text="{x:Static resources:Resources.Description}" />
+        <Editor
+            HeightRequest="100"
+            IsVisible="{Binding IsEditing}"
+            MaxLength="750"
+            Text="{Binding Book.Description}" />
+        <Label
+            IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+            Text="{Binding Book.Description}" />
+    </VerticalStackLayout>
+</ContentPage>

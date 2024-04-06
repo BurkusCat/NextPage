@@ -13,7 +13,7 @@ public partial class BookViewModel : ObservableObject
     private string author;
 
     [ObservableProperty]
-    private GenreEnum genre;
+    private GenreEnum? genre;
 
     [ObservableProperty]
     private int year;

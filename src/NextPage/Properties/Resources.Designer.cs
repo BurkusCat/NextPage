@@ -61,6 +61,15 @@ namespace NextPage.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a new book.
+        /// </summary>
+        internal static string AddBookPageTitle {
+            get {
+                return ResourceManager.GetString("AddBookPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next Page.
         /// </summary>
         internal static string AppTitle {
@@ -75,15 +84,6 @@ namespace NextPage.Properties {
         internal static string Author {
             get {
                 return ResourceManager.GetString("Author", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Book: {0}.
-        /// </summary>
-        internal static string BookPageTitle {
-            get {
-                return ResourceManager.GetString("BookPageTitle", resourceCulture);
             }
         }
         
@@ -129,6 +129,15 @@ namespace NextPage.Properties {
         internal static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Book: {0}.
+        /// </summary>
+        internal static string EditBookPageTitle {
+            get {
+                return ResourceManager.GetString("EditBookPageTitle", resourceCulture);
             }
         }
         
@@ -286,11 +295,20 @@ namespace NextPage.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Publication year: {0}.
+        ///   Looks up a localized string similar to Publication year:.
         /// </summary>
         internal static string PublicationYear {
             get {
                 return ResourceManager.GetString("PublicationYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publication year: {0}.
+        /// </summary>
+        internal static string PublicationYearWithParameter {
+            get {
+                return ResourceManager.GetString("PublicationYearWithParameter", resourceCulture);
             }
         }
         

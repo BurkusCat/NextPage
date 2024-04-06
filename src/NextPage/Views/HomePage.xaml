@@ -7,6 +7,7 @@
     xmlns:resources="clr-namespace:NextPage.Properties"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:NextPage.ViewModels"
+    x:Name="page"
     Title="{x:Static resources:Resources.HomePageTitle}"
     x:DataType="vm:HomePageViewModel"
     BindingContext="{burkus:ResolveBindingContext x:TypeArguments=vm:HomePageViewModel}"
@@ -53,6 +54,18 @@
                         ColumnDefinitions="*,*"
                         RowDefinitions="*,*,Auto,*"
                         RowSpacing="{StaticResource SmallThicknessUnit}">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding BindingContext.ViewExistingBookCommand, Source={x:Reference page}, Mode=OneTime}"
+                                CommandParameter="{Binding .}" />
+                        </Grid.GestureRecognizers>
+                        <Grid.Behaviors>
+                            <toolkit:TouchBehavior
+                                DefaultAnimationDuration="150"
+                                DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                PressedOpacity="0.6"
+                                PressedScale="0.9" />
+                        </Grid.Behaviors>
                         <Label
                             Grid.Row="0"
                             Grid.ColumnSpan="2"
@@ -72,7 +85,7 @@
                             Text="{Binding Description, Mode=OneTime}" />
                         <Label
                             Grid.Row="3"
-                            Text="{Binding Year, StringFormat={x:Static resources:Resources.PublicationYear}, Mode=OneTime}" />
+                            Text="{Binding Year, StringFormat={x:Static resources:Resources.PublicationYearWithParameter}, Mode=OneTime}" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

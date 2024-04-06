@@ -2,6 +2,8 @@
 using CommunityToolkit.Mvvm.Input;
 using MvvmHelpers;
 using NextPage.Abstractions;
+using NextPage.Constants;
+using NextPage.Views;
 
 namespace NextPage.ViewModels;
 
@@ -56,6 +58,23 @@ public partial class HomePageViewModel : ViewModelBase
     [RelayCommand]
     private async Task AddBook()
     {
+        var navigationParameters = new NavigationParameters
+        {
+            { NavigationParameterKeys.AddBook, true },
+        };
+
+        await navigationService.Push<BookPage>(navigationParameters);
+    }
+
+    [RelayCommand]
+    private async Task ViewExistingBook(BookViewModel book)
+    {
+        var navigationParameters = new NavigationParameters
+        {
+            { NavigationParameterKeys.Book, book },
+        };
+
+        await navigationService.Push<BookPage>(navigationParameters);
     }
 
     #endregion Commands
