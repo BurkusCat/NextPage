@@ -1,10 +1,14 @@
-﻿namespace NextPage
+﻿namespace NextPage;
+
+public partial class App : Application
 {
-    public partial class App : Application
+    public App()
     {
-        public App()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
+
+#if NET8_0_OR_GREATER && !ANDROID && !MACCATALYST && !IOS && !WINDOWS
+    // workaround for unit tests in Maui https://github.com/dotnet/maui/issues/3552#issuecomment-1172606125
+    public static void Main(string[] args) {}
+#endif
 }

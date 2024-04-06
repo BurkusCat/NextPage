@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextPage", "NextPage/NextPage.csproj", "{0234DD6E-8DA7-4563-868D-F9635E39D10E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextPage", "NextPage\NextPage.csproj", "{0234DD6E-8DA7-4563-868D-F9635E39D10E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextPage.UnitTests", "..\tests\NextPage.UnitTests\NextPage.UnitTests.csproj", "{020EE219-520B-43ED-AB42-5F3CDDD1AB58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B153BE6D-A88C-40EB-9601-04F259BA14BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +21,16 @@ Global
 		{0234DD6E-8DA7-4563-868D-F9635E39D10E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0234DD6E-8DA7-4563-868D-F9635E39D10E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0234DD6E-8DA7-4563-868D-F9635E39D10E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{020EE219-520B-43ED-AB42-5F3CDDD1AB58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{020EE219-520B-43ED-AB42-5F3CDDD1AB58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{020EE219-520B-43ED-AB42-5F3CDDD1AB58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{020EE219-520B-43ED-AB42-5F3CDDD1AB58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{020EE219-520B-43ED-AB42-5F3CDDD1AB58} = {B153BE6D-A88C-40EB-9601-04F259BA14BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4C06F5EB-2271-4C3A-A8BA-D98A7C527C6D}
