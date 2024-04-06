@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Logging;
 using NextPage.ViewModels;
 using NextPage.Views;
-using Org.Apache.Http.Protocol;
 
 namespace NextPage;
 

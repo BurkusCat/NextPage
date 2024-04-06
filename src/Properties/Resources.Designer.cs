@@ -59,5 +59,248 @@ namespace NextPage.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next Page.
+        /// </summary>
+        internal static string AppTitle {
+            get {
+                return ResourceManager.GetString("AppTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Author:.
+        /// </summary>
+        internal static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Book: {0}.
+        /// </summary>
+        internal static string BookPageTitle {
+            get {
+                return ResourceManager.GetString("BookPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Books.
+        /// </summary>
+        internal static string Books {
+            get {
+                return ResourceManager.GetString("Books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string ButtonDelete {
+            get {
+                return ResourceManager.GetString("ButtonDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string ButtonEdit {
+            get {
+                return ResourceManager.GetString("ButtonEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string ButtonSave {
+            get {
+                return ResourceManager.GetString("ButtonSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description:.
+        /// </summary>
+        internal static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Genre:.
+        /// </summary>
+        internal static string Genre {
+            get {
+                return ResourceManager.GetString("Genre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Academic.
+        /// </summary>
+        internal static string GenreAcademic {
+            get {
+                return ResourceManager.GetString("GenreAcademic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action.
+        /// </summary>
+        internal static string GenreAction {
+            get {
+                return ResourceManager.GetString("GenreAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adventure.
+        /// </summary>
+        internal static string GenreAdventure {
+            get {
+                return ResourceManager.GetString("GenreAdventure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Biography.
+        /// </summary>
+        internal static string GenreBiography {
+            get {
+                return ResourceManager.GetString("GenreBiography", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comedy.
+        /// </summary>
+        internal static string GenreComedy {
+            get {
+                return ResourceManager.GetString("GenreComedy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cooking.
+        /// </summary>
+        internal static string GenreCooking {
+            get {
+                return ResourceManager.GetString("GenreCooking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crime and myserty.
+        /// </summary>
+        internal static string GenreCrimeAndMystery {
+            get {
+                return ResourceManager.GetString("GenreCrimeAndMystery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fantasy.
+        /// </summary>
+        internal static string GenreFantasy {
+            get {
+                return ResourceManager.GetString("GenreFantasy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Horror.
+        /// </summary>
+        internal static string GenreHorror {
+            get {
+                return ResourceManager.GetString("GenreHorror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Romance.
+        /// </summary>
+        internal static string GenreRomance {
+            get {
+                return ResourceManager.GetString("GenreRomance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sci-fi.
+        /// </summary>
+        internal static string GenreSciFi {
+            get {
+                return ResourceManager.GetString("GenreSciFi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Self-help.
+        /// </summary>
+        internal static string GenreSelfHelp {
+            get {
+                return ResourceManager.GetString("GenreSelfHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travel.
+        /// </summary>
+        internal static string GenreTravel {
+            get {
+                return ResourceManager.GetString("GenreTravel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to True crime.
+        /// </summary>
+        internal static string GenreTrueCrime {
+            get {
+                return ResourceManager.GetString("GenreTrueCrime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        internal static string HomePageTitle {
+            get {
+                return ResourceManager.GetString("HomePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;A room without books is like a body without a soul.&quot; — Cicero.
+        /// </summary>
+        internal static string NoBooksMessage {
+            get {
+                return ResourceManager.GetString("NoBooksMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publication year:.
+        /// </summary>
+        internal static string PublicationYear {
+            get {
+                return ResourceManager.GetString("PublicationYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title:.
+        /// </summary>
+        internal static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
     }
 }

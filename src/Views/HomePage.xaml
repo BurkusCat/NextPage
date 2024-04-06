@@ -4,9 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:burkus="http://burkus.co.uk"
+    xmlns:resources="clr-namespace:NextPage.Properties"
     xmlns:vm="clr-namespace:NextPage.ViewModels"
+    Title="{x:Static resources:Resources.HomePageTitle}"
     x:DataType="vm:HomeViewModel"
-    BindingContext="{burkus:ResolveBindingContext x:TypeArguments=vm:HomeViewModel}">
+    BindingContext="{burkus:ResolveBindingContext x:TypeArguments=vm:HomeViewModel}"
+    NavigationPage.HasNavigationBar="False">
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
