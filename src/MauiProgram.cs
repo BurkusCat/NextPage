@@ -39,13 +39,15 @@ public static class MauiProgram
     }
     public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
     {
-        mauiAppBuilder.Services.AddTransient<HomeViewModel>();
+        mauiAppBuilder.Services.AddTransient<BookPageViewModel>();
+        mauiAppBuilder.Services.AddTransient<HomePageViewModel>();
 
         return mauiAppBuilder;
     }
 
     public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
     {
+        mauiAppBuilder.Services.AddTransient<BookPage>();
         mauiAppBuilder.Services.AddTransient<HomePage>();
 
         return mauiAppBuilder;

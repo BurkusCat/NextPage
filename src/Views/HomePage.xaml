@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="NextPage.Views.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -8,8 +8,8 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:NextPage.ViewModels"
     Title="{x:Static resources:Resources.HomePageTitle}"
-    x:DataType="vm:HomeViewModel"
-    BindingContext="{burkus:ResolveBindingContext x:TypeArguments=vm:HomeViewModel}"
+    x:DataType="vm:HomePageViewModel"
+    BindingContext="{burkus:ResolveBindingContext x:TypeArguments=vm:HomePageViewModel}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />

@@ -5,7 +5,7 @@ using NextPage.Abstractions;
 
 namespace NextPage.ViewModels;
 
-public partial class HomeViewModel : ViewModelBase
+public partial class HomePageViewModel : ViewModelBase
 {
     #region Fields
 
@@ -25,7 +25,7 @@ public partial class HomeViewModel : ViewModelBase
 
     #region Constructors
 
-    public HomeViewModel(
+    public HomePageViewModel(
         IBookService bookService,
         INavigationService navigationService)
         : base(navigationService)
@@ -54,7 +54,7 @@ public partial class HomeViewModel : ViewModelBase
     #region Commands
 
     [RelayCommand]
-    private async Task AddBookCommand()
+    private async Task AddBook()
     {
     }
 
