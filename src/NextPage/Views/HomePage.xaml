@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="NextPage.Views.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -17,27 +17,25 @@
         <toolkit:IsStringNotNullOrWhiteSpaceConverter x:Key="IsStringNotNullOrWhiteSpaceConverter" />
     </ContentPage.Resources>
     <AbsoluteLayout>
-        <CollectionView
+        <VerticalStackLayout
             AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All"
-            ItemsSource="{Binding Books}">
-            <CollectionView.Header>
-                <HorizontalStackLayout HorizontalOptions="Center">
-                    <Image
-                        Margin="{StaticResource StandardThicknessUnit}"
-                        Source="logo.png"
-                        WidthRequest="80" />
-                    <Label
-                        Margin="{StaticResource StandardThicknessUnit}"
-                        LineBreakMode="WordWrap"
-                        Text="{x:Static resources:Resources.TagLine}"
-                        VerticalOptions="Center" />
-                </HorizontalStackLayout>
-            </CollectionView.Header>
-            <CollectionView.EmptyView>
-                <VerticalStackLayout>
-                    <ActivityIndicator
-                        IsRunning="{Binding IsLoading}"
+            AbsoluteLayout.LayoutFlags="All">
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image
+                    Margin="{StaticResource StandardThicknessUnit}"
+                    Source="logo.png"
+                    WidthRequest="80" />
+                <Label
+                    Margin="{StaticResource StandardThicknessUnit}"
+                    LineBreakMode="WordWrap"
+                    Text="{x:Static resources:Resources.TagLine}"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <CollectionView ItemsSource="{Binding Books}">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout>
+                        <ActivityIndicator
+                            IsRunning="{Binding IsLoading}"
                         IsVisible="{Binding IsLoading}"
                         VerticalOptions="Center"
                         Color="{DynamicResource PrimaryColor}" />
@@ -93,9 +91,10 @@
             </CollectionView.ItemTemplate>
             <CollectionView.Footer>
                 <!--  Spacing so the bottom item is not covered by the FAB  -->
-                <VerticalStackLayout HeightRequest="85" />
-            </CollectionView.Footer>
-        </CollectionView>
+                    <VerticalStackLayout HeightRequest="85" />
+                </CollectionView.Footer>
+            </CollectionView>
+        </VerticalStackLayout>
 
         <!--  Floating action button (FAB)  -->
         <Border
