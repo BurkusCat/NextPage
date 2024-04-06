@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using MvvmHelpers;
 using NextPage.Abstractions;
 
@@ -49,4 +50,13 @@ public partial class HomeViewModel : ViewModelBase
     }
 
     #endregion Lifecycle Events
+
+    #region Commands
+
+    [RelayCommand]
+    private async Task AddBookCommand()
+    {
+    }
+
+    #endregion Commands
 }

@@ -14,7 +14,11 @@
     <ContentPage.Resources>
         <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
     </ContentPage.Resources>
-    <CollectionView ItemsSource="{Binding Books}">
+    <AbsoluteLayout>
+        <CollectionView
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            ItemsSource="{Binding Books}">
             <CollectionView.Header>
                 <HorizontalStackLayout HorizontalOptions="Center">
                     <Image
@@ -28,49 +32,80 @@
                         VerticalOptions="Center" />
                 </HorizontalStackLayout>
             </CollectionView.Header>
-        <CollectionView.EmptyView>
-            <VerticalStackLayout>
-                <ActivityIndicator
-                    IsRunning="{Binding IsLoading}"
-                    IsVisible="{Binding IsLoading}"
-                    VerticalOptions="Center"
-                    Color="{DynamicResource PrimaryColor}" />
-                <Label
-                    Margin="{StaticResource StandardThicknessUnit}"
-                    HorizontalTextAlignment="Center"
-                    IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}"
-                    Text="{x:Static resources:Resources.NoBooksMessage}" />
-            </VerticalStackLayout>
-        </CollectionView.EmptyView>
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="vm:BookViewModel">
-                <Grid
+            <CollectionView.EmptyView>
+                <VerticalStackLayout>
+                    <ActivityIndicator
+                        IsRunning="{Binding IsLoading}"
+                        IsVisible="{Binding IsLoading}"
+                        VerticalOptions="Center"
+                        Color="{DynamicResource PrimaryColor}" />
+                    <Label
+                        Margin="{StaticResource StandardThicknessUnit}"
+                        HorizontalTextAlignment="Center"
+                        IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}"
+                        Text="{x:Static resources:Resources.NoBooksMessage}" />
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:BookViewModel">
+                    <Grid
                         Margin="{StaticResource StandardThicknessUnit}"
                         ColumnDefinitions="*,*"
                         RowDefinitions="*,*,Auto,*"
                         RowSpacing="{StaticResource SmallThicknessUnit}">
                         <Label
-                        Grid.Row="0"
-                        Grid.ColumnSpan="2"
-                        Text="{Binding Title, Mode=OneTime}"
-                        TextColor="{AppThemeBinding Light={StaticResource Primary},
-                                                    Dark={StaticResource PrimaryDark}}" />
-                    <Label
-                        Grid.Row="1"
-                        Grid.ColumnSpan="2"
-                        FontAttributes="Italic"
-                        Text="{Binding Author, Mode=OneTime}" />
-                    <Label
-                        Grid.Row="2"
-                        Grid.ColumnSpan="2"
-                        LineBreakMode="TailTruncation"
-                        MaxLines="2"
-                        Text="{Binding Description, Mode=OneTime}" />
-                    <Label
-                        Grid.Row="3"
-                        Text="{Binding Year, StringFormat={x:Static resources:Resources.PublicationYear}, Mode=OneTime}" />
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2"
+                            Text="{Binding Title, Mode=OneTime}"
+                            TextColor="{AppThemeBinding Light={StaticResource Primary},
+                                                        Dark={StaticResource PrimaryDark}}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            FontAttributes="Italic"
+                            Text="{Binding Author, Mode=OneTime}" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            LineBreakMode="TailTruncation"
+                            MaxLines="2"
+                            Text="{Binding Description, Mode=OneTime}" />
+                        <Label
+                            Grid.Row="3"
+                            Text="{Binding Year, StringFormat={x:Static resources:Resources.PublicationYear}, Mode=OneTime}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Footer>
+                <!--  Spacing so the bottom item is not covered by the FAB  -->
+                <VerticalStackLayout HeightRequest="85" />
+            </CollectionView.Footer>
+        </CollectionView>
+
+        <!--  Floating action button (FAB)  -->
+        <Border
+            AbsoluteLayout.LayoutBounds="0.95,0.97,70,70"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            BackgroundColor="{AppThemeBinding Light={StaticResource Primary},
+                                              Dark={StaticResource PrimaryDark}}"
+            HeightRequest="70"
+            StrokeShape="RoundRectangle 35"
+            StrokeThickness="0"
+            WidthRequest="70">
+            <Border.Behaviors>
+                <toolkit:TouchBehavior
+                    Command="{Binding AddBookCommand, Mode=OneTime}"
+                    DefaultAnimationDuration="150"
+                    DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                    PressedOpacity="0.6"
+                    PressedScale="0.8" />
+            </Border.Behaviors>
+            <Label
+                FontAutoScalingEnabled="False"
+                FontSize="46"
+                HorizontalOptions="Center"
+                Text="+"
+                VerticalOptions="Center" />
+        </Border>
+    </AbsoluteLayout>
 </ContentPage>
