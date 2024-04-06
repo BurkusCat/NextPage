@@ -218,7 +218,11 @@
     <comment>Translate</comment>
   </data>
   <data name="PublicationYear" xml:space="preserve">
-    <value>Publication year:</value>
+    <value>Publication year: {0}</value>
+    <comment>Translate with parameter</comment>
+  </data>
+  <data name="TagLine" xml:space="preserve">
+    <value>Your personal book library 📘</value>
     <comment>Translate</comment>
   </data>
   <data name="Title" xml:space="preserve">

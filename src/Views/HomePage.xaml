@@ -1,36 +1,76 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="NextPage.Views.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:burkus="http://burkus.co.uk"
     xmlns:resources="clr-namespace:NextPage.Properties"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:vm="clr-namespace:NextPage.ViewModels"
     Title="{x:Static resources:Resources.HomePageTitle}"
     x:DataType="vm:HomeViewModel"
     BindingContext="{burkus:ResolveBindingContext x:TypeArguments=vm:HomeViewModel}"
     NavigationPage.HasNavigationBar="False">
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Image
-                Aspect="AspectFit"
-                HeightRequest="185"
-                SemanticProperties.Description="dot net bot in a race car number eight"
-                Source="dotnet_bot.png" />
-
-            <Label
-                SemanticProperties.HeadingLevel="Level1"
-                Style="{StaticResource Headline}"
-                Text="Hello, World!" />
-
-            <Label
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                SemanticProperties.HeadingLevel="Level2"
-                Style="{StaticResource SubHeadline}"
-                Text="Welcome to &#10;.NET Multi-platform App UI" />
-        </VerticalStackLayout>
-    </ScrollView>
-
+    <ContentPage.Resources>
+        <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+    </ContentPage.Resources>
+    <CollectionView ItemsSource="{Binding Books}">
+            <CollectionView.Header>
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Image
+                        Margin="{StaticResource StandardThicknessUnit}"
+                        Source="logo.png"
+                        WidthRequest="80" />
+                    <Label
+                        Margin="{StaticResource StandardThicknessUnit}"
+                        LineBreakMode="WordWrap"
+                        Text="{x:Static resources:Resources.TagLine}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </CollectionView.Header>
+        <CollectionView.EmptyView>
+            <VerticalStackLayout>
+                <ActivityIndicator
+                    IsRunning="{Binding IsLoading}"
+                    IsVisible="{Binding IsLoading}"
+                    VerticalOptions="Center"
+                    Color="{DynamicResource PrimaryColor}" />
+                <Label
+                    Margin="{StaticResource StandardThicknessUnit}"
+                    HorizontalTextAlignment="Center"
+                    IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}"
+                    Text="{x:Static resources:Resources.NoBooksMessage}" />
+            </VerticalStackLayout>
+        </CollectionView.EmptyView>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="vm:BookViewModel">
+                <Grid
+                        Margin="{StaticResource StandardThicknessUnit}"
+                        ColumnDefinitions="*,*"
+                        RowDefinitions="*,*,Auto,*"
+                        RowSpacing="{StaticResource SmallThicknessUnit}">
+                        <Label
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding Title, Mode=OneTime}"
+                        TextColor="{AppThemeBinding Light={StaticResource Primary},
+                                                    Dark={StaticResource PrimaryDark}}" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        FontAttributes="Italic"
+                        Text="{Binding Author, Mode=OneTime}" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        LineBreakMode="TailTruncation"
+                        MaxLines="2"
+                        Text="{Binding Description, Mode=OneTime}" />
+                    <Label
+                        Grid.Row="3"
+                        Text="{Binding Year, StringFormat={x:Static resources:Resources.PublicationYear}, Mode=OneTime}" />
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

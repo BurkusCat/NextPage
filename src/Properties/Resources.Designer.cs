@@ -286,11 +286,20 @@ namespace NextPage.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Publication year:.
+        ///   Looks up a localized string similar to Publication year: {0}.
         /// </summary>
         internal static string PublicationYear {
             get {
                 return ResourceManager.GetString("PublicationYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your personal book library 📘.
+        /// </summary>
+        internal static string TagLine {
+            get {
+                return ResourceManager.GetString("TagLine", resourceCulture);
             }
         }
         

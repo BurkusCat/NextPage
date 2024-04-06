@@ -1,14 +1,22 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:NextPage"
-             x:Class="NextPage.App">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application
+    x:Class="NextPage.App"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:NextPage">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!--#region UNITS-->
+
+            <x:Double x:Key="StandardThicknessUnit">10</x:Double>
+            <x:Double x:Key="SmallThicknessUnit">5</x:Double>
+
+            <!--#endregion UNITS-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using NextPage.Abstractions;
+using NextPage.Services;
 using NextPage.ViewModels;
 using NextPage.Views;
 
@@ -51,6 +53,8 @@ public static class MauiProgram
 
     public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
     {
+        mauiAppBuilder.Services.AddSingleton<IBookService, BookService>();
+
         return mauiAppBuilder;
     }
 }
