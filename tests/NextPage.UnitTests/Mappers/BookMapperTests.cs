@@ -1,3 +1,4 @@
+using NextPage.Constants;
 using NextPage.Data;
 using NextPage.Mappers;
 using NextPage.ViewModels;
@@ -16,7 +17,7 @@ public class BookMapperTests
             Author = "Claire Lee",
             Description = "A book description",
             Year = 1990,
-            Genre = GenreEnum.Academic,
+            Genre = DropdownOptions.Genres.Find(x => x.Value == GenreEnum.Academic),
         };
 
         // act
@@ -51,6 +52,6 @@ public class BookMapperTests
         Assert.Equal("Claire Lee", viewModel.Author);
         Assert.Equal("A book description", viewModel.Description);
         Assert.Equal(1990, viewModel.Year);
-        Assert.Equal(GenreEnum.Academic, viewModel.Genre);
+        Assert.Equal(DropdownOptions.Genres.Find(x => x.Value == GenreEnum.Academic), viewModel.Genre);
     }
 }

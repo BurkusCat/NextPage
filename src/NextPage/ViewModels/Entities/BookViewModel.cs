@@ -1,6 +1,7 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
 using NextPage.Data;
+using NextPage.Models;
 
 namespace NextPage.ViewModels;
 
@@ -16,7 +17,7 @@ public partial class BookViewModel : ObservableObject
     private string author;
 
     [ObservableProperty]
-    private GenreEnum? genre;
+    private DropdownOption<GenreEnum>? genre;
 
     [ObservableProperty]
     private int year;

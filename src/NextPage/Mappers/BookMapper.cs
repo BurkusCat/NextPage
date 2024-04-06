@@ -1,4 +1,5 @@
-﻿using NextPage.Data;
+﻿using NextPage.Constants;
+using NextPage.Data;
 using NextPage.ViewModels;
 
 namespace NextPage.Mappers;
@@ -13,7 +14,7 @@ public static class BookMapper
             Title = bookViewModel.Title,
             Author = bookViewModel.Author,
             Description = bookViewModel.Description,
-            Genre = (GenreEnum)bookViewModel.Genre,
+            Genre = bookViewModel.Genre.Value,
             Year = bookViewModel.Year,
         };
     }
@@ -26,7 +27,7 @@ public static class BookMapper
             Title = bookModel.Title,
             Author = bookModel.Author,
             Description = bookModel.Description,
-            Genre = bookModel.Genre,
+            Genre = DropdownOptions.Genres.Find(x => x.Value == bookModel.Genre),
             Year = bookModel.Year,
         };
     }

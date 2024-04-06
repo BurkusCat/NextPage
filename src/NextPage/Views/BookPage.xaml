@@ -18,61 +18,96 @@
             <Setter Property="FontAttributes" Value="Bold" />
         </Style>
     </ContentPage.Resources>
-    <VerticalStackLayout
-        Margin="{StaticResource StandardThicknessUnit}"
-        Spacing="{StaticResource StandardThicknessUnit}">
-        <Label
-            Style="{StaticResource PropertyLabelStyle}"
-            Text="{x:Static resources:Resources.Title}" />
-        <Entry
-            IsVisible="{Binding IsEditing}"
-            MaxLength="100"
-            Text="{Binding Book.Title}" />
-        <Label
-            IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
-            Text="{Binding Book.Title}" />
+    <ScrollView>
+        <VerticalStackLayout
+            Margin="{StaticResource StandardThicknessUnit}"
+            Spacing="{StaticResource StandardThicknessUnit}">
+            <Label
+                Style="{StaticResource PropertyLabelStyle}"
+                Text="{x:Static resources:Resources.Title}" />
+            <Entry
+                IsVisible="{Binding IsEditing}"
+                MaxLength="100"
+                ReturnType="Next"
+                Text="{Binding Book.Title}" />
+            <Label
+                IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                Text="{Binding Book.Title}" />
 
-        <Label
-            Style="{StaticResource PropertyLabelStyle}"
-            Text="{x:Static resources:Resources.Author}" />
-        <Entry
-            IsVisible="{Binding IsEditing}"
-            MaxLength="100"
-            Text="{Binding Book.Author}" />
-        <Label
-            IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
-            Text="{Binding Book.Author}" />
+            <Label
+                Style="{StaticResource PropertyLabelStyle}"
+                Text="{x:Static resources:Resources.Author}" />
+            <Entry
+                IsVisible="{Binding IsEditing}"
+                MaxLength="100"
+                ReturnType="Next"
+                Text="{Binding Book.Author}" />
+            <Label
+                IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                Text="{Binding Book.Author}" />
 
-        <Label
-            Style="{StaticResource PropertyLabelStyle}"
-            Text="{x:Static resources:Resources.Genre}" />
-        <Picker IsVisible="{Binding IsEditing}" />
-        <Label
-            IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
-            Text="{Binding Book.Genre}" />
+            <Label
+                Style="{StaticResource PropertyLabelStyle}"
+                Text="{x:Static resources:Resources.Genre}" />
+            <Picker
+                IsVisible="{Binding IsEditing}"
+                ItemDisplayBinding="{Binding Description}"
+                ItemsSource="{Binding Genres}"
+                SelectedItem="{Binding Book.Genre}" />
+            <Label
+                IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                Text="{Binding Book.Genre.Description}" />
 
-        <Label
-            Style="{StaticResource PropertyLabelStyle}"
-            Text="{x:Static resources:Resources.PublicationYear}" />
-        <Entry
-            IsVisible="{Binding IsEditing}"
-            Keyboard="Numeric"
-            MaxLength="4"
-            Text="{Binding Book.Year}" />
-        <Label
-            IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
-            Text="{Binding Book.Year}" />
+            <Label
+                Style="{StaticResource PropertyLabelStyle}"
+                Text="{x:Static resources:Resources.PublicationYear}" />
+            <Entry
+                IsVisible="{Binding IsEditing}"
+                Keyboard="Numeric"
+                MaxLength="4"
+                ReturnType="Next"
+                Text="{Binding Book.Year}" />
+            <Label
+                IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                Text="{Binding Book.Year}" />
 
-        <Label
-            Style="{StaticResource PropertyLabelStyle}"
-            Text="{x:Static resources:Resources.Description}" />
-        <Editor
-            HeightRequest="100"
-            IsVisible="{Binding IsEditing}"
-            MaxLength="750"
-            Text="{Binding Book.Description}" />
-        <Label
-            IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
-            Text="{Binding Book.Description}" />
-    </VerticalStackLayout>
+            <Label
+                Style="{StaticResource PropertyLabelStyle}"
+                Text="{x:Static resources:Resources.Description}" />
+            <Editor
+                HeightRequest="100"
+                IsVisible="{Binding IsEditing}"
+                MaxLength="750"
+                Text="{Binding Book.Description}" />
+            <Label
+                IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                Text="{Binding Book.Description}" />
+
+            <!--  Action buttons  -->
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="{StaticResource StandardThicknessUnit}">
+                <Button
+                    Grid.Column="0"
+                    Command="{Binding DeleteCommand}"
+                    IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                    Text="{x:Static resources:Resources.ButtonDelete}" />
+                <Button
+                    Grid.Column="0"
+                    Command="{Binding CancelCommand}"
+                    IsVisible="{Binding IsEditing}"
+                    Text="{x:Static resources:Resources.ButtonCancel}" />
+                <Button
+                    Grid.Column="1"
+                    Command="{Binding EditCommand}"
+                    IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                    Text="{x:Static resources:Resources.ButtonEdit}" />
+                <Button
+                    Grid.Column="1"
+                    Command="{Binding SaveCommand}"
+                    IsVisible="{Binding IsEditing}"
+                    Text="{x:Static resources:Resources.ButtonSave}" />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

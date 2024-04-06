@@ -15,5 +15,5 @@ public class BookModel
 
     public int Year { get; set; }
 
-    public string Description { get; set; }
+    public string? Description { get; set; }
 }

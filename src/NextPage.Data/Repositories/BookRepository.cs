@@ -22,9 +22,9 @@ public class BookRepository : BaseRepository, IBookRepository
         AddOrUpdate(book);
     }
 
-    public void DeleteBook(BookModel book)
+    public void DeleteBook(Guid id)
     {
-        var bookToDelete = dbContext.Books.FirstOrDefault(x => x.Id == book.Id);
+        var bookToDelete = dbContext.Books.FirstOrDefault(x => x.Id == id);
 
         if (bookToDelete != null)
         {

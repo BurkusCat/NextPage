@@ -17,6 +17,6 @@ public interface IBookRepository
     /// <summary>
     /// Delete a saved book.
     /// </summary>
-    /// <param name="book">The book to delete</param>
-    void DeleteBook(BookModel book);
+    /// <param name="book">The ID of the book to delete</param>
+    void DeleteBook(Guid id);
 }

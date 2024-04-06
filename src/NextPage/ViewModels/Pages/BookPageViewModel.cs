@@ -1,6 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using NextPage.Abstractions;
 using NextPage.Constants;
+using NextPage.Data;
+using NextPage.Models;
 using NextPage.Properties;
 
 namespace NextPage.ViewModels;
@@ -9,7 +12,8 @@ public partial class BookPageViewModel : ViewModelBase
 {
     #region Fields
 
-    private IBookService bookService;
+    private readonly IBookService bookService;
+    private readonly IDialogService dialogService;
 
     #endregion Fields
 
@@ -27,16 +31,20 @@ public partial class BookPageViewModel : ViewModelBase
     [ObservableProperty]
     private BookViewModel book;
 
+    public IList<DropdownOption<GenreEnum>> Genres { get; } = DropdownOptions.Genres;
+
     #endregion Properties
 
     #region Constructors
 
     public BookPageViewModel(
         IBookService bookService,
+        IDialogService dialogService,
         INavigationService navigationService)
         : base(navigationService)
     {
         this.bookService = bookService;
+        this.dialogService = dialogService;
     }
 
     #endregion Constructors
@@ -65,9 +73,113 @@ public partial class BookPageViewModel : ViewModelBase
 
     #region Commands
 
+    [RelayCommand]
+    private async Task Save()
+    {
+        var errorMessage = ValidateBook();
+
+        if (string.IsNullOrEmpty(errorMessage))
+        {
+            // book is valid and can be saved
+            bookService.AddOrUpdateBook(Book);
+
+            // update the title
+            Title = string.Format(
+                Resources.EditBookPageTitle,
+                Book.Title);
+
+            await FinishBookEditing();
+        }
+        else
+        {
+            var bookErrorMessage = string.Format(
+                Resources.BookErrorMessageFormat,
+                errorMessage);
+
+            await dialogService.DisplayAlert(
+                Resources.Error,
+                bookErrorMessage,
+                Resources.ButtonOK);
+        }
+    }
+
+    [RelayCommand]
+    private void Edit()
+    {
+        IsEditing = true;
+    }
+
+    [RelayCommand]
+    private async Task Cancel()
+    {
+        var confirmed = await dialogService.DisplayAlert(
+            Resources.ConfirmDiscard,
+            Resources.AreYouSureDiscard,
+            Resources.ButtonDiscard,
+            Resources.ButtonCancel);
+
+        if (!confirmed)
+        {
+            // user did not want to cancel edits
+            return;
+        }
+
+        await FinishBookEditing();
+    }
+
+    [RelayCommand]
+    private async Task Delete()
+    {
+        var confirmed = await dialogService.DisplayAlert(
+            Resources.ConfirmDelete,
+            Resources.AreYouSureDelete,
+            Resources.ButtonDelete,
+            Resources.ButtonCancel);
+
+        if (!confirmed)
+        {
+            // user did not want to delete book
+            return;
+        }
+
+        bookService.DeleteBook(Book);
+        await navigationService.Pop();
+    }
+
     #endregion Commands
 
     #region Private methods
+
+    /// <summary>
+    /// Validates the book on this page and returns an error message.
+    /// </summary>
+    /// <returns>An error message if anything is wrong with the book</returns>
+    private string ValidateBook()
+    {
+        string errorString = string.Empty;
+
+        if (string.IsNullOrEmpty(Book.Title))
+        {
+            errorString += Resources.EmptyTitleValidationMessage;
+        }
+
+        if (string.IsNullOrEmpty(Book.Author))
+        {
+            errorString += Resources.EmptyAuthorValidationMessage;
+        }
+
+        if (Book.Genre == null)
+        {
+            errorString += Resources.EmptyGenreValidationMessage;
+        }
+
+        if (Book.Year < 1 || Book.Year > 9999)
+        {
+            errorString += Resources.InvalidYearValidationMessage;
+        }
+
+        return errorString;
+    }
 
     private void SetupAddMode()
     {
@@ -88,6 +200,20 @@ public partial class BookPageViewModel : ViewModelBase
         Title = string.Format(
             Resources.EditBookPageTitle,
             Book.Title);
+    }
+
+    private async Task FinishBookEditing()
+    {
+        if (Book.Id == Guid.Empty)
+        {
+            // we were adding a book so leave the page
+            await navigationService.Pop();
+        }
+        else
+        {
+            // exit edit mode for existing books
+            IsEditing = false;
+        }
     }
 
     #endregion Private methods

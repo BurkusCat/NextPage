@@ -79,11 +79,40 @@ namespace NextPage.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure want to delete this book? This cannot be undone..
+        /// </summary>
+        internal static string AreYouSureDelete {
+            get {
+                return ResourceManager.GetString("AreYouSureDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure want to discard your changes to this book?.
+        /// </summary>
+        internal static string AreYouSureDiscard {
+            get {
+                return ResourceManager.GetString("AreYouSureDiscard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Author:.
         /// </summary>
         internal static string Author {
             get {
                 return ResourceManager.GetString("Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a problem with the book you tried to save. Please correct the following error(s):
+        ///
+        ///{0}.
+        /// </summary>
+        internal static string BookErrorMessageFormat {
+            get {
+                return ResourceManager.GetString("BookErrorMessageFormat", resourceCulture);
             }
         }
         
@@ -97,11 +126,29 @@ namespace NextPage.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string ButtonCancel {
+            get {
+                return ResourceManager.GetString("ButtonCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         internal static string ButtonDelete {
             get {
                 return ResourceManager.GetString("ButtonDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discard.
+        /// </summary>
+        internal static string ButtonDiscard {
+            get {
+                return ResourceManager.GetString("ButtonDiscard", resourceCulture);
             }
         }
         
@@ -115,11 +162,38 @@ namespace NextPage.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string ButtonOK {
+            get {
+                return ResourceManager.GetString("ButtonOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string ButtonSave {
             get {
                 return ResourceManager.GetString("ButtonSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm delete.
+        /// </summary>
+        internal static string ConfirmDelete {
+            get {
+                return ResourceManager.GetString("ConfirmDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm discard.
+        /// </summary>
+        internal static string ConfirmDiscard {
+            get {
+                return ResourceManager.GetString("ConfirmDiscard", resourceCulture);
             }
         }
         
@@ -138,6 +212,45 @@ namespace NextPage.Properties {
         internal static string EditBookPageTitle {
             get {
                 return ResourceManager.GetString("EditBookPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - The book must have an Author
+        ///.
+        /// </summary>
+        internal static string EmptyAuthorValidationMessage {
+            get {
+                return ResourceManager.GetString("EmptyAuthorValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - The book must have a Genre
+        ///.
+        /// </summary>
+        internal static string EmptyGenreValidationMessage {
+            get {
+                return ResourceManager.GetString("EmptyGenreValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - The book must have a Title
+        ///.
+        /// </summary>
+        internal static string EmptyTitleValidationMessage {
+            get {
+                return ResourceManager.GetString("EmptyTitleValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         
@@ -282,6 +395,16 @@ namespace NextPage.Properties {
         internal static string HomePageTitle {
             get {
                 return ResourceManager.GetString("HomePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - The book must have a valid year e.g. 1999
+        ///.
+        /// </summary>
+        internal static string InvalidYearValidationMessage {
+            get {
+                return ResourceManager.GetString("InvalidYearValidationMessage", resourceCulture);
             }
         }
         

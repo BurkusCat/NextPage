@@ -11,7 +11,7 @@ public partial class HomePageViewModel : ViewModelBase
 {
     #region Fields
 
-    private IBookService bookService;
+    private readonly IBookService bookService;
 
     #endregion Fields
 
