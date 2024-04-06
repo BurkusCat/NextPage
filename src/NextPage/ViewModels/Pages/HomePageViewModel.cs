@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using MvvmHelpers;
 using NextPage.Abstractions;
 using NextPage.Constants;
+using NextPage.Properties;
 using NextPage.Views;
 
 namespace NextPage.ViewModels;
@@ -12,6 +13,7 @@ public partial class HomePageViewModel : ViewModelBase
     #region Fields
 
     private readonly IBookService bookService;
+    private readonly IDialogService dialogService;
 
     #endregion Fields
 
@@ -29,10 +31,12 @@ public partial class HomePageViewModel : ViewModelBase
 
     public HomePageViewModel(
         IBookService bookService,
+        IDialogService dialogService,
         INavigationService navigationService)
         : base(navigationService)
     {
         this.bookService = bookService;
+        this.dialogService = dialogService;
     }
 
     #endregion Constructors
@@ -75,6 +79,25 @@ public partial class HomePageViewModel : ViewModelBase
         };
 
         await navigationService.Push<BookPage>(navigationParameters);
+    }
+
+    [RelayCommand]
+    private async Task Delete(BookViewModel book)
+    {
+        var confirmed = await dialogService.DisplayAlert(
+            Resources.ConfirmDelete,
+            Resources.AreYouSureDelete,
+            Resources.ButtonDelete,
+            Resources.ButtonCancel);
+
+        if (!confirmed)
+        {
+            // user did not want to delete book
+            return;
+        }
+
+        bookService.DeleteBook(book);
+        Books.Remove(book);
     }
 
     #endregion Commands

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="NextPage.Views.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -36,61 +36,79 @@
                     <VerticalStackLayout>
                         <ActivityIndicator
                             IsRunning="{Binding IsLoading}"
-                        IsVisible="{Binding IsLoading}"
-                        VerticalOptions="Center"
-                        Color="{DynamicResource PrimaryColor}" />
-                    <Label
-                        Margin="{StaticResource StandardThicknessUnit}"
-                        HorizontalTextAlignment="Center"
-                        IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}"
-                        Text="{x:Static resources:Resources.NoBooksMessage}" />
-                </VerticalStackLayout>
-            </CollectionView.EmptyView>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="vm:BookViewModel">
-                    <Grid
-                        Margin="{StaticResource StandardThicknessUnit}"
-                        ColumnDefinitions="*,*"
-                        RowDefinitions="*,*,Auto,*"
-                        RowSpacing="{StaticResource SmallThicknessUnit}">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Command="{Binding BindingContext.ViewExistingBookCommand, Source={x:Reference page}, Mode=OneTime}"
-                                CommandParameter="{Binding .}" />
-                        </Grid.GestureRecognizers>
-                        <Grid.Behaviors>
-                            <toolkit:TouchBehavior
-                                DefaultAnimationDuration="150"
-                                DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
-                                PressedOpacity="0.6"
-                                PressedScale="0.9" />
-                        </Grid.Behaviors>
+                            IsVisible="{Binding IsLoading}"
+                            VerticalOptions="Center"
+                            Color="{DynamicResource PrimaryColor}" />
                         <Label
-                            Grid.Row="0"
-                            Grid.ColumnSpan="2"
-                            Text="{Binding Title, Mode=OneTime}"
-                            TextColor="{AppThemeBinding Light={StaticResource Primary},
-                                                        Dark={StaticResource PrimaryDark}}" />
-                        <Label
-                            Grid.Row="1"
-                            Grid.ColumnSpan="2"
-                            FontAttributes="Italic"
-                            Text="{Binding Author, Mode=OneTime}" />
-                        <Label
-                            Grid.Row="2"
-                            Grid.ColumnSpan="2"
-                            IsVisible="{Binding Description, Converter={StaticResource IsStringNotNullOrWhiteSpaceConverter}}"
-                            LineBreakMode="TailTruncation"
-                            MaxLines="2"
-                            Text="{Binding Description, Mode=OneTime}" />
-                        <Label
-                            Grid.Row="3"
-                            Text="{Binding Year, StringFormat={x:Static resources:Resources.PublicationYearWithParameter}, Mode=OneTime}" />
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-            <CollectionView.Footer>
-                <!--  Spacing so the bottom item is not covered by the FAB  -->
+                            Margin="{StaticResource StandardThicknessUnit}"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}"
+                            Text="{x:Static resources:Resources.NoBooksMessage}" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:BookViewModel">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItemView
+                                        BackgroundColor="{DynamicResource WarningRed}"
+                                        Command="{Binding BindingContext.DeleteCommand, Source={x:Reference page}, Mode=OneTime}"
+                                        CommandParameter="{Binding .}">
+                                        <Label
+                                            Margin="30,0"
+                                            Text="{x:Static resources:Resources.ButtonDelete}"
+                                            TextColor="{DynamicResource White}"
+                                            VerticalOptions="Center" />
+                                    </SwipeItemView>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <!--  Content  -->
+                            <Grid
+                                Margin="{StaticResource StandardThicknessUnit}"
+                                ColumnDefinitions="*,*"
+                                RowDefinitions="*,*,Auto,*"
+                                RowSpacing="{StaticResource SmallThicknessUnit}">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding BindingContext.ViewExistingBookCommand, Source={x:Reference page}, Mode=OneTime}"
+                                        CommandParameter="{Binding .}" />
+                                </Grid.GestureRecognizers>
+                                <Grid.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        DefaultAnimationDuration="150"
+                                        DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                                        PressedOpacity="0.6"
+                                        PressedScale="0.9" />
+                                </Grid.Behaviors>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.ColumnSpan="2"
+                                    Text="{Binding Title, Mode=OneTime}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Primary},
+                                                                Dark={StaticResource PrimaryDark}}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2"
+                                    FontAttributes="Italic"
+                                    Text="{Binding Author, Mode=OneTime}" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2"
+                                    IsVisible="{Binding Description, Converter={StaticResource IsStringNotNullOrWhiteSpaceConverter}}"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2"
+                                    Text="{Binding Description, Mode=OneTime}" />
+                                <Label
+                                    Grid.Row="3"
+                                    Text="{Binding Year, StringFormat={x:Static resources:Resources.PublicationYearWithParameter}, Mode=OneTime}" />
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.Footer>
+                    <!--  Spacing so the bottom item is not covered by the FAB  -->
                     <VerticalStackLayout HeightRequest="85" />
                 </CollectionView.Footer>
             </CollectionView>
