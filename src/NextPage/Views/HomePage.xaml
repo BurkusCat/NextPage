@@ -36,9 +36,7 @@
                     <VerticalStackLayout>
                         <ActivityIndicator
                             IsRunning="{Binding IsLoading}"
-                            IsVisible="{Binding IsLoading}"
-                            VerticalOptions="Center"
-                            Color="{DynamicResource PrimaryColor}" />
+                            IsVisible="{Binding IsLoading}" />
                         <Label
                             Margin="{StaticResource StandardThicknessUnit}"
                             HorizontalTextAlignment="Center"

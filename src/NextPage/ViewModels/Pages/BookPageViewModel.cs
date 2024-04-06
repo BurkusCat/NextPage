@@ -80,6 +80,8 @@ public partial class BookPageViewModel : ViewModelBase
 
         if (string.IsNullOrEmpty(errorMessage))
         {
+            IsLoading = true;
+
             // book is valid and can be saved
             bookService.AddOrUpdateBook(Book);
 
@@ -141,6 +143,8 @@ public partial class BookPageViewModel : ViewModelBase
             // user did not want to delete book
             return;
         }
+
+        IsLoading = true;
 
         bookService.DeleteBook(Book);
         await navigationService.Pop();
@@ -213,6 +217,7 @@ public partial class BookPageViewModel : ViewModelBase
         {
             // exit edit mode for existing books
             IsEditing = false;
+            IsLoading = false;
         }
     }
 
