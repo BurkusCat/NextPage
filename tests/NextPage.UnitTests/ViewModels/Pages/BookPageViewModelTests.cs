@@ -1,9 +1,8 @@
 using Moq;
 using NextPage.Abstractions;
 using NextPage.Constants;
-using NextPage.Models.Enums;
+using NextPage.Data;
 using NextPage.ViewModels;
-using NextPage.Views;
 
 namespace NextPage.UnitTests.ViewModels;
 

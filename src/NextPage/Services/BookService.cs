@@ -1,5 +1,5 @@
 ﻿using NextPage.Abstractions;
-using NextPage.Models.Enums;
+using NextPage.Data;
 using NextPage.ViewModels;
 
 namespace NextPage.Services;

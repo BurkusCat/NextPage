@@ -1,11 +1,14 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
-using NextPage.Models.Enums;
+using NextPage.Data;
 
 namespace NextPage.ViewModels;
 
 public partial class BookViewModel : ObservableObject
 {
+    [ObservableProperty]
+    private Guid id;
+
     [ObservableProperty]
     private string title;
 

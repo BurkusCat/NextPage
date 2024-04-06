@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using NextPage.Abstractions;
+using NextPage.Data;
 using NextPage.Services;
 using NextPage.ViewModels;
 using NextPage.Views;
@@ -25,6 +26,7 @@ public static class MauiProgram
             .RegisterViewModels()
             .RegisterViews()
             .RegisterAppServices()
+            .RegisterPersistanceRepositories()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -56,6 +58,15 @@ public static class MauiProgram
     public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
     {
         mauiAppBuilder.Services.AddSingleton<IBookService, BookService>();
+
+        return mauiAppBuilder;
+    }
+
+    public static MauiAppBuilder RegisterPersistanceRepositories(this MauiAppBuilder mauiAppBuilder)
+    {
+        mauiAppBuilder.Services.AddSingleton<IBookRepository, BookRepository>();
+
+        mauiAppBuilder.Services.AddDbContext<NextPageDbContext>();
 
         return mauiAppBuilder;
     }
