@@ -180,7 +180,7 @@
     <comment>Translate</comment>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Description:</value>
+    <value>Description (optional):</value>
     <comment>Translate</comment>
   </data>
   <data name="EditBookPageTitle" xml:space="preserve">

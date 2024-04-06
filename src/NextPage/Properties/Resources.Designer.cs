@@ -198,7 +198,7 @@ namespace NextPage.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description:.
+        ///   Looks up a localized string similar to Description (optional):.
         /// </summary>
         internal static string Description {
             get {
