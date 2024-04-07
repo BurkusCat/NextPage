@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:burkus="http://burkus.co.uk"
+    xmlns:converters="clr-namespace:NextPage.Converters"
     xmlns:resources="clr-namespace:NextPage.Properties"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:views="clr-namespace:NextPage.Views"
@@ -16,6 +17,7 @@
     <ContentPage.Resources>
         <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
         <toolkit:IsStringNotNullOrWhiteSpaceConverter x:Key="IsStringNotNullOrWhiteSpaceConverter" />
+        <converters:SortOrderToSortImageConverter x:Key="SortOrderToSortImageConverter" />
     </ContentPage.Resources>
     <AbsoluteLayout>
         <VerticalStackLayout
@@ -49,7 +51,7 @@
                     Grid.Row="1"
                     Grid.Column="2"
                     Command="{Binding SortCommand}"
-                    IconSource="ascending.png" />
+                    IconSource="{Binding SortOrder, Converter={StaticResource SortOrderToSortImageConverter}}" />
 
                 <Button
                     Grid.Row="2"
