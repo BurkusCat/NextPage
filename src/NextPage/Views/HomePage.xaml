@@ -6,6 +6,7 @@
     xmlns:burkus="http://burkus.co.uk"
     xmlns:resources="clr-namespace:NextPage.Properties"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:views="clr-namespace:NextPage.Views"
     xmlns:vm="clr-namespace:NextPage.ViewModels"
     x:Name="page"
     Title="{x:Static resources:Resources.HomePageTitle}"
@@ -38,32 +39,14 @@
                     LineBreakMode="WordWrap"
                     Text="{x:Static resources:Resources.TagLine}"
                     VerticalOptions="Center" />
-                <Entry
+
+                <views:SearchBox
                     Grid.Row="1"
-                    Grid.Column="1"
-                    Placeholder="{x:Static resources:Resources.SearchPlaceholder}" />
-                <Border
+                    Grid.Column="1" />
+                <views:IconButton
                     Grid.Row="1"
                     Grid.Column="2"
-                    Margin="{StaticResource SmallThicknessUnit}"
-                    Padding="{StaticResource SmallThicknessUnit}"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource Primary},
-                                                      Dark={StaticResource PrimaryDark}}"
-                    StrokeShape="RoundRectangle 5"
-                    StrokeThickness="0"
-                    VerticalOptions="Center">
-                    <Border.Behaviors>
-                        <toolkit:TouchBehavior
-                            DefaultAnimationDuration="150"
-                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
-                            PressedOpacity="0.7"
-                            PressedScale="0.9" />
-                    </Border.Behaviors>
-                    <Image
-                        HeightRequest="24"
-                        Source="ascending.png"
-                        WidthRequest="24" />
-                </Border>
+                    IconSource="ascending.png" />
             </Grid>
             <CollectionView ItemsSource="{Binding Books}">
                 <CollectionView.EmptyView>

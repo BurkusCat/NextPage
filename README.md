@@ -24,7 +24,9 @@ The business logic for the pages is written within `ViewModels`. Properties are 
 
 The pages use dependency injection to bring in `Services` for navigation, saving/loading data, and showing alert messages.
 
-The page UI is built using XAML. Pages use [compiled bindings](https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/data-binding/compiled-bindings?view=net-maui-8.0) to improve performance and to give compile-time resolving of bindings. Most UI text is stored within `Resources.resx` to allow for string reuse, seperation from the code, and to make it easier to localize the application in the future. The app has been tested with the Android TalkBack screenreader and at higher display scale/font sizes to ensure it is accessible.
+The page UI is built using XAML. Pages use [compiled bindings](https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/data-binding/compiled-bindings?view=net-maui-8.0) to improve performance and to give compile-time resolving of bindings. Most UI text is stored within `Resources.resx` to allow for string reuse, separation from the code, and to make it easier to localize the application in the future. The app has been tested with the Android TalkBack screenreader and at higher display scale/font sizes to ensure it is accessible.
+
+To improve the user experience, this project includes: validation messages, swipe to delete + delete on the book page itself, searching, and sorting.
 
 The unit test project uses strict mocks to ensure that only expected dependencies are ran with the correct parameters. This makes sure that no unexpected code/services are invoked.
 
