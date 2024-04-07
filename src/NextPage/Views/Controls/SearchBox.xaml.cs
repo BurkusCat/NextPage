@@ -32,7 +32,7 @@ public partial class SearchBox : ContentView
         BindableProperty.Create(
             nameof(SearchCommand),
             returnType: typeof(ICommand),
-            defaultBindingMode: BindingMode.OneTime,
+            defaultBindingMode: BindingMode.OneWay,
             declaringType: typeof(SearchBox));
 
     /// <summary>

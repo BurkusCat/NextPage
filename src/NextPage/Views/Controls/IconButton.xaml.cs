@@ -31,7 +31,7 @@ public partial class IconButton : ContentView
         BindableProperty.Create(
             nameof(Command),
             returnType: typeof(ICommand),
-            defaultBindingMode: BindingMode.OneTime,
+            defaultBindingMode: BindingMode.OneWay,
             declaringType: typeof(IconButton));
 
     /// <summary>
