@@ -20,17 +20,51 @@
         <VerticalStackLayout
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All">
-            <HorizontalStackLayout HorizontalOptions="Center">
+            <Grid
+                ColumnDefinitions="Auto,*,Auto"
+                RowDefinitions="*,*">
                 <Image
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
                     Margin="{StaticResource StandardThicknessUnit}"
                     Source="logo.png"
-                    WidthRequest="80" />
+                    WidthRequest="70" />
                 <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
                     Margin="{StaticResource StandardThicknessUnit}"
                     LineBreakMode="WordWrap"
                     Text="{x:Static resources:Resources.TagLine}"
                     VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                <Entry
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Placeholder="{x:Static resources:Resources.SearchPlaceholder}" />
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="{StaticResource SmallThicknessUnit}"
+                    Padding="{StaticResource SmallThicknessUnit}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource Primary},
+                                                      Dark={StaticResource PrimaryDark}}"
+                    StrokeShape="RoundRectangle 5"
+                    StrokeThickness="0"
+                    VerticalOptions="Center">
+                    <Border.Behaviors>
+                        <toolkit:TouchBehavior
+                            DefaultAnimationDuration="150"
+                            DefaultAnimationEasing="{x:Static Easing.CubicInOut}"
+                            PressedOpacity="0.7"
+                            PressedScale="0.9" />
+                    </Border.Behaviors>
+                    <Image
+                        HeightRequest="24"
+                        Source="ascending.png"
+                        WidthRequest="24" />
+                </Border>
+            </Grid>
             <CollectionView ItemsSource="{Binding Books}">
                 <CollectionView.EmptyView>
                     <VerticalStackLayout>

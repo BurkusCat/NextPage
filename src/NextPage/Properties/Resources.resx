@@ -287,6 +287,10 @@
     <value>Publication year: {0}</value>
     <comment>Translate with parameter</comment>
   </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Search...</value>
+    <comment>Translate</comment>
+  </data>
   <data name="TagLine" xml:space="preserve">
     <value>Your personal book library 📘</value>
     <comment>Translate</comment>
