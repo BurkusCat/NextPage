@@ -1,9 +1,5 @@
-using NextPage.Constants;
 using NextPage.Converters;
-using NextPage.Data;
-using NextPage.Mappers;
 using NextPage.Models.Enums;
-using NextPage.ViewModels;
 using System.Globalization;
 
 namespace NextPage.UnitTests.ViewModels;

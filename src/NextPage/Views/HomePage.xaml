@@ -31,7 +31,8 @@
                     Grid.RowSpan="2"
                     Grid.Column="0"
                     Margin="{StaticResource StandardThicknessUnit}"
-                    Source="logo.png"
+                    Source="{AppThemeBinding Light='logolight.png',
+                                             Dark='logo.png'}"
                     WidthRequest="70" />
                 <Label
                     Grid.Row="0"
@@ -166,6 +167,7 @@
                 FontSize="46"
                 HorizontalOptions="Center"
                 Text="+"
+                TextColor="{DynamicResource White}"
                 VerticalOptions="Center" />
         </Border>
     </AbsoluteLayout>
