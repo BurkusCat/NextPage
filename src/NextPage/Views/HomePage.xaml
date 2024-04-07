@@ -58,6 +58,7 @@
                     Grid.Row="2"
                     Grid.Column="0"
                     Grid.ColumnSpan="3"
+                    Margin="{StaticResource SmallThicknessUnit}"
                     Command="{Binding ClearFiltersAndSortCommand}"
                     HorizontalOptions="End"
                     IsVisible="{Binding IsFilteringOrSorting}"
