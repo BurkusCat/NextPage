@@ -151,6 +151,10 @@
     <value>Cancel</value>
     <comment>Translate</comment>
   </data>
+  <data name="ButtonClearFiltersAndSort" xml:space="preserve">
+    <value>Clear filters &amp; sort</value>
+    <comment>Translate</comment>
+  </data>
   <data name="ButtonDelete" xml:space="preserve">
     <value>Delete</value>
     <comment>Translate</comment>

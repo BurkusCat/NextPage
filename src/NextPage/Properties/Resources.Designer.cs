@@ -135,6 +135,15 @@ namespace NextPage.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear filters &amp; sort.
+        /// </summary>
+        internal static string ButtonClearFiltersAndSort {
+            get {
+                return ResourceManager.GetString("ButtonClearFiltersAndSort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         internal static string ButtonDelete {

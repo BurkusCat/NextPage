@@ -23,7 +23,7 @@
             AbsoluteLayout.LayoutFlags="All">
             <Grid
                 ColumnDefinitions="Auto,*,Auto"
-                RowDefinitions="*,*">
+                RowDefinitions="*,*,Auto">
                 <Image
                     Grid.Row="0"
                     Grid.RowSpan="2"
@@ -50,6 +50,15 @@
                     Grid.Column="2"
                     Command="{Binding SortCommand}"
                     IconSource="ascending.png" />
+
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Command="{Binding ClearFiltersAndSortCommand}"
+                    HorizontalOptions="End"
+                    IsVisible="{Binding IsFilteringOrSorting}"
+                    Text="{x:Static resources:Resources.ButtonClearFiltersAndSort}" />
             </Grid>
             <CollectionView ItemsSource="{Binding FilteredBooks}">
                 <CollectionView.EmptyView>

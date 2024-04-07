@@ -29,16 +29,26 @@ public partial class HomePageViewModel : ViewModelBase
     private bool isLoading;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsFilteringOrSorting))]
     private string searchQuery;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsFilteringOrSorting))]
     private SortOrderEnum? sortOrder;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsFilteringOrSorting))]
     private BookSortTypeEnum? sortType;
 
     [ObservableProperty]
     private ObservableRangeCollection<BookViewModel> filteredBooks = new ObservableRangeCollection<BookViewModel>();
+
+    public bool IsFilteringOrSorting
+    {
+        get => SortOrder != null
+            || SortType != null
+            || !string.IsNullOrWhiteSpace(SearchQuery);
+    }
 
     #endregion Properties
 
@@ -144,6 +154,16 @@ public partial class HomePageViewModel : ViewModelBase
         await navigationService.Push<SortPage>(navigationParameters);
     }
 
+    [RelayCommand]
+    private void ClearFiltersAndSort()
+    {
+        SearchQuery = string.Empty;
+        SortType = null;
+        SortOrder = null;
+
+        SortAndSearchBooks();
+    }
+
     #endregion Commands
 
     #region Private methods
@@ -153,7 +173,7 @@ public partial class HomePageViewModel : ViewModelBase
         IEnumerable<BookViewModel> filteredBooks = originalBooks;
 
         // 1. Search
-        if (!string.IsNullOrEmpty(SearchQuery))
+        if (!string.IsNullOrWhiteSpace(SearchQuery))
         {
             // filter results with a case insensitive search
             filteredBooks = filteredBooks
@@ -175,7 +195,7 @@ public partial class HomePageViewModel : ViewModelBase
             sortedBooks.Sort(bookViewModelComparer);
         }
 
-        FilteredBooks.ReplaceRange(filteredBooks);
+        FilteredBooks.ReplaceRange(sortedBooks);
     }
 
 
