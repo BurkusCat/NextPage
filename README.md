@@ -18,7 +18,7 @@ Next Page is a Personal Book Library application developed with .NET MAUI and C#
 For convience, I have provided the release version of the application produced from the build pipeline: `nextpage.apk` which you can drag into an emulator to install. This should not be done in typical, production repositories.
 
 ## Overview
-The project is built using the MVVM pattern. I have used a library I developed, [Burkus.Mvvm.Maui](https://github.com/BurkusCat/Burkus.Mvvm.Maui), in combination with [MVVM Toolkit](https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/) to reduce boilerplate, repeated code, and to make app easily unit testable.
+The project is built using the MVVM pattern. I have used a library I developed, [Burkus.Mvvm.Maui](https://github.com/BurkusCat/Burkus.Mvvm.Maui), in combination with [MVVM Toolkit](https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/) to reduce boilerplate, repeated code, and to make the app easily unit testable.
 
 The business logic for the pages is written within `ViewModels`. Properties are used to expose data to the UI layer so data can be viewed and modified by the user.
 
