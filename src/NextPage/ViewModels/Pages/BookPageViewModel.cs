@@ -90,7 +90,7 @@ public partial class BookPageViewModel : ViewModelBase
                 Resources.EditBookPageTitle,
                 Book.Title);
 
-            await FinishBookEditing();
+            await FinishBookSaving();
         }
         else
         {
@@ -126,7 +126,8 @@ public partial class BookPageViewModel : ViewModelBase
             return;
         }
 
-        await FinishBookEditing();
+        // discard your changes
+        await navigationService.Pop();
     }
 
     [RelayCommand]
@@ -206,7 +207,7 @@ public partial class BookPageViewModel : ViewModelBase
             Book.Title);
     }
 
-    private async Task FinishBookEditing()
+    private async Task FinishBookSaving()
     {
         if (Book.Id == Guid.Empty)
         {

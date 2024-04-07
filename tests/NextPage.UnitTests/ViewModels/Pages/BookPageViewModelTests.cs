@@ -170,12 +170,13 @@ public class BookPageViewModelTests
                 It.IsAny<FlowDirection>()))
             .ReturnsAsync(true);
 
+        mockNavigationService.SetupSequence(x => x.Pop())
+            .Returns(Task.CompletedTask);
+
         // act
         viewModel.CancelCommand.Execute(null);
 
         // assert
-        Assert.False(viewModel.IsEditing);
-
         VerifyAll();
     }
 
