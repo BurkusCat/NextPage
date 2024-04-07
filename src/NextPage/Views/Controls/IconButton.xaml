@@ -8,6 +8,7 @@
     <Border
         Margin="{StaticResource SmallThicknessUnit}"
         Padding="{StaticResource SmallThicknessUnit}"
+        AutomationProperties.IsInAccessibleTree="False"
         BackgroundColor="{AppThemeBinding Light={StaticResource Primary},
                                           Dark={StaticResource PrimaryDark}}"
         StrokeShape="RoundRectangle 5"
@@ -22,6 +23,7 @@
                 PressedScale="0.9" />
         </Border.Behaviors>
         <Image
+            AutomationProperties.IsInAccessibleTree="False"
             HeightRequest="24"
             Source="{Binding IconSource, Source={x:Reference view}}"
             WidthRequest="24" />

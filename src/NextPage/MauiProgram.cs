@@ -60,6 +60,7 @@ public static class MauiProgram
     public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
     {
         mauiAppBuilder.Services.AddSingleton<IBookService, BookService>();
+        mauiAppBuilder.Services.AddSingleton(SemanticScreenReader.Default);
 
         return mauiAppBuilder;
     }

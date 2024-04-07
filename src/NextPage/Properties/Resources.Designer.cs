@@ -454,6 +454,96 @@ namespace NextPage.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new book button.
+        /// </summary>
+        internal static string SemanticDescriptionAddNewBookButton {
+            get {
+                return ResourceManager.GetString("SemanticDescriptionAddNewBookButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current sort type is: {0}, current sort order is: {1}..
+        /// </summary>
+        internal static string SemanticDescriptionCurrentSortDescription {
+            get {
+                return ResourceManager.GetString("SemanticDescriptionCurrentSortDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete button.
+        /// </summary>
+        internal static string SemanticDescriptionDeleteButton {
+            get {
+                return ResourceManager.GetString("SemanticDescriptionDeleteButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading.
+        /// </summary>
+        internal static string SemanticDescriptionLoading {
+            get {
+                return ResourceManager.GetString("SemanticDescriptionLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Next Page logo with a turning page icon..
+        /// </summary>
+        internal static string SemanticDescriptionLogo {
+            get {
+                return ResourceManager.GetString("SemanticDescriptionLogo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No books were found. &quot;A room without books is like a body without a soul.&quot; — Cicero.
+        /// </summary>
+        internal static string SemanticDescriptionNoBooksMessage {
+            get {
+                return ResourceManager.GetString("SemanticDescriptionNoBooksMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No sort currently selected.
+        /// </summary>
+        internal static string SemanticDescriptionNoSortSelected {
+            get {
+                return ResourceManager.GetString("SemanticDescriptionNoSortSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Double tap and hold to open book.
+        /// </summary>
+        internal static string SemanticDescriptionOpenBookInstruction {
+            get {
+                return ResourceManager.GetString("SemanticDescriptionOpenBookInstruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search box. Enter your query here..
+        /// </summary>
+        internal static string SemanticDescriptionSearchPlaceholder {
+            get {
+                return ResourceManager.GetString("SemanticDescriptionSearchPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort button.
+        /// </summary>
+        internal static string SemanticDescriptionSortButton {
+            get {
+                return ResourceManager.GetString("SemanticDescriptionSortButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sort by:.
         /// </summary>
         internal static string SortBy {

@@ -95,7 +95,7 @@ public partial class SortOptionView : ContentView
 
     private void CurrentSortTypeChanged(object newValue)
     {
-        var sortType = (Enum)newValue;
+        var sortType = (BookSortTypeEnum?)newValue;
 
         // if the page's sort type is equal to this sort option, that means this
         // option is currently selected

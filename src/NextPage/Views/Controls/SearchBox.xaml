@@ -9,6 +9,7 @@
     x:Name="view">
     <Entry
         Placeholder="{x:Static resources:Resources.SearchPlaceholder}"
+        SemanticProperties.Description="{x:Static resources:Resources.SemanticDescriptionSearchPlaceholder}"
         Text="{Binding Text, Source={x:Reference view}, Mode=TwoWay}">
         <Entry.Behaviors>
             <toolkit:EventToCommandBehavior

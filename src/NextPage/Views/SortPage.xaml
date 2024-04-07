@@ -11,8 +11,7 @@
     xmlns:vm="clr-namespace:NextPage.ViewModels"
     x:Name="page"
     Title="{x:Static resources:Resources.SortPageTitle}"
-    BindingContext="{burkus:ResolveBindingContext x:TypeArguments=vm:SortPageViewModel}"
-    NavigationPage.HasNavigationBar="False">
+    BindingContext="{burkus:ResolveBindingContext x:TypeArguments=vm:SortPageViewModel}">
     <ContentPage.Resources>
         <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
         <Style
@@ -21,40 +20,21 @@
             <Setter Property="FontAttributes" Value="Bold" />
         </Style>
     </ContentPage.Resources>
-    <Grid
-        ColumnDefinitions="*, Auto"
-        RowDefinitions="Auto,Auto">
-        <Label
-            Grid.Row="0"
-            Grid.Column="0"
-            Margin="{StaticResource StandardThicknessUnit}"
-            Style="{StaticResource SubHeadline}"
-            Text="{x:Static resources:Resources.SortBy}" />
-        <views:IconButton
-            Grid.Row="0"
-            Grid.Column="1"
-            Command="{Binding CloseCommand}"
-            IconSource="close.png" />
-        <VerticalStackLayout
-            Grid.Row="1"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            BindableLayout.ItemsSource="{Binding SortOptions}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate>
-                    <views:SortOptionView
-                        CurrentSortOrder="{Binding BindingContext.SortOrder, Source={x:Reference page}}"
-                        CurrentSortType="{Binding BindingContext.SortType, Source={x:Reference page}}"
-                        SortOptionName="{Binding Description}"
-                        SortType="{Binding Value}">
-                        <views:SortOptionView.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Command="{Binding BindingContext.SelectSortOptionCommand, Source={x:Reference page}}"
-                                CommandParameter="{Binding .}" />
-                        </views:SortOptionView.GestureRecognizers>
-                    </views:SortOptionView>
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
-        </VerticalStackLayout>
-    </Grid>
+    <VerticalStackLayout BindableLayout.ItemsSource="{Binding SortOptions}">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <views:SortOptionView
+                    CurrentSortOrder="{Binding BindingContext.SortOrder, Source={x:Reference page}}"
+                    CurrentSortType="{Binding BindingContext.SortType, Source={x:Reference page}}"
+                    SortOptionName="{Binding Description}"
+                    SortType="{Binding Value}">
+                    <views:SortOptionView.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding BindingContext.SelectSortOptionCommand, Source={x:Reference page}}"
+                            CommandParameter="{Binding .}" />
+                    </views:SortOptionView.GestureRecognizers>
+                </views:SortOptionView>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </VerticalStackLayout>
 </ContentPage>

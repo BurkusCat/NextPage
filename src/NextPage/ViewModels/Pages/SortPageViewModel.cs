@@ -3,11 +3,18 @@ using CommunityToolkit.Mvvm.Input;
 using NextPage.Constants;
 using NextPage.Models;
 using NextPage.Models.Enums;
+using NextPage.Properties;
 
 namespace NextPage.ViewModels;
 
 public partial class SortPageViewModel : ViewModelBase
 {
+    #region Fields
+
+    private readonly ISemanticScreenReader semanticScreenReader;
+
+    #endregion Fields
+
     #region Properties
 
     [ObservableProperty]
@@ -23,9 +30,11 @@ public partial class SortPageViewModel : ViewModelBase
     #region Constructors
 
     public SortPageViewModel(
-        INavigationService navigationService)
+        INavigationService navigationService,
+        ISemanticScreenReader semanticScreenReader)
         : base(navigationService)
     {
+        this.semanticScreenReader = semanticScreenReader;
     }
 
     #endregion Constructors
@@ -38,6 +47,8 @@ public partial class SortPageViewModel : ViewModelBase
 
         SortOrder = parameters.GetValue<SortOrderEnum?>(NavigationParameterKeys.SortOrder);
         SortType = parameters.GetValue<BookSortTypeEnum?>(NavigationParameterKeys.SortType);
+
+        AnnounceSortStateForScreenReaders();
     }
 
     public override async Task OnNavigatedFrom(NavigationParameters parameters)
@@ -76,19 +87,38 @@ public partial class SortPageViewModel : ViewModelBase
                     SortOrder = SortOrderEnum.Ascending;
                     break;
             }
-        } else
+        }
+        else
         {
             // this sort type is being selected for the first time
             SortOrder = SortOrderEnum.Ascending;
             SortType = sortOption.Value;
         }
-    }
 
-    [RelayCommand]
-    private async Task Close()
-    {
-        await navigationService.Pop();
+        AnnounceSortStateForScreenReaders();
     }
 
     #endregion Commands
+
+    #region Private methods
+
+    private void AnnounceSortStateForScreenReaders()
+    {
+        // announce the current state of the sort to screen readers
+        if (SortOrder == null || SortType == null)
+        {
+            semanticScreenReader.Announce(Resources.SemanticDescriptionNoSortSelected);
+        }
+        else
+        {
+            var sortTypeMessage = string.Format(
+                Resources.SemanticDescriptionCurrentSortDescription,
+                SortType?.ToString(),
+                SortOrder?.ToString());
+
+            semanticScreenReader.Announce(sortTypeMessage);
+        }
+    }
+
+    #endregion Private methods
 }

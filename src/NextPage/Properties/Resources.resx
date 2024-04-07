@@ -295,6 +295,46 @@
     <value>Search...</value>
     <comment>Translate</comment>
   </data>
+  <data name="SemanticDescriptionAddNewBookButton" xml:space="preserve">
+    <value>Add new book button</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="SemanticDescriptionCurrentSortDescription" xml:space="preserve">
+    <value>Current sort type is: {0}, current sort order is: {1}.</value>
+    <comment>Translate with parameters</comment>
+  </data>
+  <data name="SemanticDescriptionDeleteButton" xml:space="preserve">
+    <value>Delete button</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="SemanticDescriptionLoading" xml:space="preserve">
+    <value>Loading</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="SemanticDescriptionLogo" xml:space="preserve">
+    <value>The Next Page logo with a turning page icon.</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="SemanticDescriptionNoBooksMessage" xml:space="preserve">
+    <value>No books were found. "A room without books is like a body without a soul." — Cicero</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="SemanticDescriptionNoSortSelected" xml:space="preserve">
+    <value>No sort currently selected</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="SemanticDescriptionOpenBookInstruction" xml:space="preserve">
+    <value>Double tap and hold to open book</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="SemanticDescriptionSearchPlaceholder" xml:space="preserve">
+    <value>Search box. Enter your query here.</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="SemanticDescriptionSortButton" xml:space="preserve">
+    <value>Sort button</value>
+    <comment>Translate</comment>
+  </data>
   <data name="SortBy" xml:space="preserve">
     <value>Sort by:</value>
     <comment>Translate</comment>

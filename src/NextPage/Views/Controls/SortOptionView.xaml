@@ -24,6 +24,7 @@
                                               Dark={StaticResource PrimaryDark}}"
             HorizontalOptions="End"
             IsVisible="False"
+            SemanticProperties.Description="{Binding CurrentSortOrder, Source={x:Reference view}}"
             StrokeShape="RoundRectangle 10"
             StrokeThickness="0"
             VerticalOptions="Center">

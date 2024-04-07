@@ -154,22 +154,6 @@ public class SortPageViewModelTests
         VerifyAll();
     }
 
-    [Fact]
-    public async Task CloseCommand_WhenPressed_ShouldPopTheSortPage()
-    {
-        // Arrange
-        var viewModel = ViewModel;
-
-        mockNavigationService.SetupSequence(x => x.Pop())
-            .Returns(Task.CompletedTask);
-
-        // Act
-        await viewModel.CloseCommand.ExecuteAsync(null);
-
-        // Assert
-        VerifyAll();
-    }
-
     private void VerifyAll()
     {
         mockNavigationService.VerifyAll();

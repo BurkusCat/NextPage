@@ -27,42 +27,49 @@
                 Margin="{StaticResource StandardThicknessUnit}"
                 Spacing="{StaticResource StandardThicknessUnit}">
                 <Label
+                    x:Name="titleLabel"
                     Style="{StaticResource PropertyLabelStyle}"
                     Text="{x:Static resources:Resources.Title}" />
                 <Entry
                     IsVisible="{Binding IsEditing}"
                     MaxLength="100"
                     ReturnType="Next"
+                    SemanticProperties.Description="{Binding Source={x:Reference titleLabel}, Path=Text}"
                     Text="{Binding Book.Title}" />
                 <Label
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
                     Text="{Binding Book.Title}" />
 
                 <Label
+                    x:Name="authorLabel"
                     Style="{StaticResource PropertyLabelStyle}"
                     Text="{x:Static resources:Resources.Author}" />
                 <Entry
                     IsVisible="{Binding IsEditing}"
                     MaxLength="100"
                     ReturnType="Next"
+                    SemanticProperties.Description="{Binding Source={x:Reference authorLabel}, Path=Text}"
                     Text="{Binding Book.Author}" />
                 <Label
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
                     Text="{Binding Book.Author}" />
 
                 <Label
+                    x:Name="genreLabel"
                     Style="{StaticResource PropertyLabelStyle}"
                     Text="{x:Static resources:Resources.Genre}" />
                 <Picker
                     IsVisible="{Binding IsEditing}"
                     ItemDisplayBinding="{Binding Description}"
                     ItemsSource="{Binding Genres}"
-                    SelectedItem="{Binding Book.Genre}" />
+                    SelectedItem="{Binding Book.Genre}"
+                    SemanticProperties.Description="{Binding Source={x:Reference genreLabel}, Path=Text}" />
                 <Label
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
                     Text="{Binding Book.Genre.Description}" />
 
                 <Label
+                    x:Name="yearLabel"
                     Style="{StaticResource PropertyLabelStyle}"
                     Text="{x:Static resources:Resources.PublicationYear}" />
                 <Entry
@@ -70,18 +77,21 @@
                     Keyboard="Numeric"
                     MaxLength="4"
                     ReturnType="Next"
+                    SemanticProperties.Description="{Binding Source={x:Reference yearLabel}, Path=Text}"
                     Text="{Binding Book.Year}" />
                 <Label
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
                     Text="{Binding Book.Year}" />
 
                 <Label
+                    x:Name="descriptionLabel"
                     Style="{StaticResource PropertyLabelStyle}"
                     Text="{x:Static resources:Resources.Description}" />
                 <Editor
                     AutoSize="TextChanges"
                     IsVisible="{Binding IsEditing}"
                     MaxLength="750"
+                    SemanticProperties.Description="{Binding Source={x:Reference descriptionLabel}, Path=Text}"
                     Text="{Binding Book.Description}" />
                 <Label
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
