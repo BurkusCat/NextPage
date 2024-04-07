@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="NextPage.Views.SortOptionView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Name="view"
+    HorizontalOptions="Fill">
+    <Grid
+        Margin="{StaticResource StandardThicknessUnit}"
+        ColumnDefinitions="*,Auto"
+        RowDefinitions="*">
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            MinimumHeightRequest="44"
+            Text="{Binding SortOptionName, Source={x:Reference view}}"
+            VerticalTextAlignment="Center" />
+        <Border
+            x:Name="borderView"
+            Grid.Row="0"
+            Grid.Column="1"
+            BackgroundColor="{AppThemeBinding Light={StaticResource Primary},
+                                              Dark={StaticResource PrimaryDark}}"
+            HorizontalOptions="End"
+            IsVisible="False"
+            StrokeShape="RoundRectangle 10"
+            StrokeThickness="0"
+            VerticalOptions="Center">
+            <Image
+                x:Name="sortOrderImage"
+                Margin="{StaticResource SmallThicknessUnit}"
+                HeightRequest="24"
+                WidthRequest="24" />
+        </Border>
+    </Grid>
+</ContentView>

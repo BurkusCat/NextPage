@@ -43,6 +43,7 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddTransient<BookPageViewModel>();
         mauiAppBuilder.Services.AddTransient<HomePageViewModel>();
+        mauiAppBuilder.Services.AddTransient<SortPageViewModel>();
 
         return mauiAppBuilder;
     }
@@ -51,6 +52,7 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddTransient<BookPage>();
         mauiAppBuilder.Services.AddTransient<HomePage>();
+        mauiAppBuilder.Services.AddTransient<SortPage>();
 
         return mauiAppBuilder;
     }

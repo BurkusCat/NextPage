@@ -291,6 +291,26 @@
     <value>Search...</value>
     <comment>Translate</comment>
   </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Sort by:</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="SortPageTitle" xml:space="preserve">
+    <value>Sort</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="SortTypeAuthor" xml:space="preserve">
+    <value>Author</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="SortTypeTitle" xml:space="preserve">
+    <value>Title</value>
+    <comment>Translate</comment>
+  </data>
+  <data name="SortTypeYear" xml:space="preserve">
+    <value>Year</value>
+    <comment>Translate</comment>
+  </data>
   <data name="TagLine" xml:space="preserve">
     <value>Your personal book library 📘</value>
     <comment>Translate</comment>

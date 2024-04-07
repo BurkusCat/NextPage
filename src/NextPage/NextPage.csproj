@@ -82,6 +82,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\Controls\SortOptionView.xaml.cs">
+      <DependentUpon>SortOptionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SortPage.xaml.cs">
+      <DependentUpon>SortPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\BookPage.xaml.cs">
       <DependentUpon>BookPage.xaml</DependentUpon>
     </Compile>
@@ -104,6 +110,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <MauiXaml Update="Views\Controls\SortOptionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Views\SortPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\BookPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>

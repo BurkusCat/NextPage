@@ -445,6 +445,51 @@ namespace NextPage.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sort by:.
+        /// </summary>
+        internal static string SortBy {
+            get {
+                return ResourceManager.GetString("SortBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort.
+        /// </summary>
+        internal static string SortPageTitle {
+            get {
+                return ResourceManager.GetString("SortPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Author.
+        /// </summary>
+        internal static string SortTypeAuthor {
+            get {
+                return ResourceManager.GetString("SortTypeAuthor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        internal static string SortTypeTitle {
+            get {
+                return ResourceManager.GetString("SortTypeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year.
+        /// </summary>
+        internal static string SortTypeYear {
+            get {
+                return ResourceManager.GetString("SortTypeYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your personal book library 📘.
         /// </summary>
         internal static string TagLine {

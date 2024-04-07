@@ -3,7 +3,9 @@ using CommunityToolkit.Mvvm.Input;
 using MvvmHelpers;
 using NextPage.Abstractions;
 using NextPage.Constants;
+using NextPage.Models.Enums;
 using NextPage.Properties;
+using NextPage.Utilities;
 using NextPage.Views;
 
 namespace NextPage.ViewModels;
@@ -15,6 +17,10 @@ public partial class HomePageViewModel : ViewModelBase
     private readonly IBookService bookService;
     private readonly IDialogService dialogService;
 
+    private List<BookViewModel> originalBooks = new List<BookViewModel>();
+
+    private readonly BookViewModelComparer bookViewModelComparer = new BookViewModelComparer();
+
     #endregion Fields
 
     #region Properties
@@ -23,7 +29,16 @@ public partial class HomePageViewModel : ViewModelBase
     private bool isLoading;
 
     [ObservableProperty]
-    private ObservableRangeCollection<BookViewModel> books = new ObservableRangeCollection<BookViewModel>();
+    private string searchQuery;
+
+    [ObservableProperty]
+    private SortOrderEnum? sortOrder;
+
+    [ObservableProperty]
+    private BookSortTypeEnum? sortType;
+
+    [ObservableProperty]
+    private ObservableRangeCollection<BookViewModel> filteredBooks = new ObservableRangeCollection<BookViewModel>();
 
     #endregion Properties
 
@@ -49,8 +64,17 @@ public partial class HomePageViewModel : ViewModelBase
 
         IsLoading = true;
 
-        var books = bookService.GetAllBooks();
-        Books.ReplaceRange(books);
+        // if these parameters are passed, update the selected sort options
+        if (parameters.ContainsKey(NavigationParameterKeys.SortOrder)
+            && parameters.ContainsKey(NavigationParameterKeys.SortType))
+        {
+            SortOrder = parameters.GetValue<SortOrderEnum?>(NavigationParameterKeys.SortOrder);
+            SortType = parameters.GetValue<BookSortTypeEnum?>(NavigationParameterKeys.SortType);
+        }
+
+        originalBooks = bookService.GetAllBooks()
+            .ToList();
+        SortAndSearchBooks();
 
         IsLoading = false;
     }
@@ -97,8 +121,63 @@ public partial class HomePageViewModel : ViewModelBase
         }
 
         bookService.DeleteBook(book);
-        Books.Remove(book);
+        originalBooks.Remove(book);
+        FilteredBooks.Remove(book);
+    }
+
+    [RelayCommand]
+    private void Search()
+    {
+        SortAndSearchBooks();
+    }
+
+    [RelayCommand]
+    private async Task Sort()
+    {
+        // pass the currently selected sort options
+        var navigationParameters = new NavigationParameters
+        {
+            { NavigationParameterKeys.SortOrder, SortOrder },
+            { NavigationParameterKeys.SortType, SortType },
+        };
+
+        await navigationService.Push<SortPage>(navigationParameters);
     }
 
     #endregion Commands
+
+    #region Private methods
+
+    private void SortAndSearchBooks()
+    {
+        IEnumerable<BookViewModel> filteredBooks = originalBooks;
+
+        // 1. Search
+        if (!string.IsNullOrEmpty(SearchQuery))
+        {
+            // filter results with a case insensitive search
+            filteredBooks = filteredBooks
+                .Where(book =>
+                    book.Title.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    book.Author.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    book.Description.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        // 2. Sort
+        var sortedBooks = filteredBooks.ToList();
+
+        if (SortOrder != null && SortType != null)
+        {
+            // sort the list if the user has requested it
+            bookViewModelComparer.SortType = SortType.Value;
+            bookViewModelComparer.SortOrder = SortOrder.Value;
+
+            sortedBooks.Sort(bookViewModelComparer);
+        }
+
+        FilteredBooks.ReplaceRange(filteredBooks);
+    }
+
+
+    #endregion Private methods
 }

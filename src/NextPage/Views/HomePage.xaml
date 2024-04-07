@@ -42,13 +42,16 @@
 
                 <views:SearchBox
                     Grid.Row="1"
-                    Grid.Column="1" />
+                    Grid.Column="1"
+                    SearchCommand="{Binding SearchCommand}"
+                    Text="{Binding SearchQuery}" />
                 <views:IconButton
                     Grid.Row="1"
                     Grid.Column="2"
+                    Command="{Binding SortCommand}"
                     IconSource="ascending.png" />
             </Grid>
-            <CollectionView ItemsSource="{Binding Books}">
+            <CollectionView ItemsSource="{Binding FilteredBooks}">
                 <CollectionView.EmptyView>
                     <VerticalStackLayout>
                         <ActivityIndicator

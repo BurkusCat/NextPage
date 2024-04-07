@@ -8,7 +8,6 @@
     x:Name="view">
     <Grid ColumnDefinitions="*,Auto">
         <Entry
-            x:Name="searchEntry"
             Grid.Column="0"
             Placeholder="{x:Static resources:Resources.SearchPlaceholder}"
             Text="{Binding Text, Source={x:Reference view}, Mode=TwoWay}" />

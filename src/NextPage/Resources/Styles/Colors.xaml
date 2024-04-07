@@ -30,6 +30,9 @@
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
 
+    <Color x:Key="Transparent">#00FFFFFF</Color>
+    <Color x:Key="SortSelectedColor">#550b64db</Color>
+
     <SolidColorBrush
         x:Key="PrimaryBrush"
         Color="{StaticResource Primary}" />

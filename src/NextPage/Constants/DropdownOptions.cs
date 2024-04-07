@@ -1,12 +1,13 @@
 ﻿using NextPage.Data;
 using NextPage.Models;
+using NextPage.Models.Enums;
 using NextPage.Properties;
+using NextPage.Views;
 
 namespace NextPage.Constants;
 
 public static class DropdownOptions
 { 
-    
     public static List<DropdownOption<GenreEnum>> Genres = new List<DropdownOption<GenreEnum>>()
     {
         new DropdownOption<GenreEnum>
@@ -78,6 +79,25 @@ public static class DropdownOptions
         {
             Description = Resources.GenreTrueCrime,
             Value = GenreEnum.TrueCrime,
+        },
+    };
+
+    public static List<DropdownOption<BookSortTypeEnum>> SortTypeOptions = new List<DropdownOption<BookSortTypeEnum>>()
+    {
+        new DropdownOption<BookSortTypeEnum>
+        {
+            Description = Resources.SortTypeTitle,
+            Value = BookSortTypeEnum.Title,
+        },
+        new DropdownOption<BookSortTypeEnum>
+        {
+            Description = Resources.SortTypeAuthor,
+            Value = BookSortTypeEnum.Author,
+        },
+        new DropdownOption<BookSortTypeEnum>
+        {
+            Description = Resources.SortTypeYear,
+            Value = BookSortTypeEnum.Year,
         },
     };
 }
