@@ -1,0 +1,83 @@
+name: Build Android Release
+
+on:
+  push:
+    branches: [ actions ]
+
+env:
+    CONFIGURATION: Release # Values: Debug, Release
+    VERSIONNUMBER: 1.${{ github.run_number }}.${{ github.run_attempt }}
+    
+jobs:
+  buildAndroid:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET SDK ${{env.DOTNETVERSION}}
+        uses: actions/setup-dotnet@v2
+        with:
+          global-json-file: src/global.json
+
+      - name: List installed .NET info
+        shell: pwsh
+        run: dotnet --info
+
+      - name: Install MAUI Workload
+        run: dotnet workload install maui --ignore-failed-sources
+
+      - name: Restore nuget packages
+        run: |
+          cd src\
+          dotnet restore NextPage.sln
+
+      - uses: managedcode/MAUIAppVersion@v1
+        with:
+          csproj: 'src/NextPage/NextPage.csproj'
+          version: ${{ github.run_number }} # to keep value unique
+          displayVersion: '${{ env.VERSIONNUMBER }}'
+          printFile: true # optional
+
+      # https://docs.microsoft.com/en-us/dotnet/maui/android/deployment/overview
+      - name: Build Android App
+        run: dotnet publish src/NextPage/NextPage.csproj -f:net8.0-android -c:${{ env.CONFIGURATION }} --no-restore /p:AndroidPackageFormat="apk"
+
+      # Store Android Signing Keystore and password in Secrets using base64 encoding
+      # openssl enc -base64 -a -in nextpage.jks -out nextpage_base64.txt
+      - name: Extract Android signing key from env
+        shell: bash
+        run: |
+          cd src/NextPage
+          mkdir android
+          echo "${{ secrets.RELEASE_KEYSTORE }}" > android/nextpage.jks.base64
+          base64 -di android/nextpage.jks.base64 > android/nextpage.decrypted.jks
+
+      # check android SDK paths etc in installed VM : https://github.com/actions/virtual-environments#available-environments
+      - name: Sign dev build
+        shell: bash
+        run: |
+          cd src/Nextpage
+          jarsigner -keystore android/nextpage.decrypted.jks -storepass "${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" -signedjar bin/${{ env.CONFIGURATION }}/net8.0-android/publish/uk.co.burkus.nextpage-Signed.apk bin/${{ env.CONFIGURATION }}/net8.0-android/publish/uk.co.burkus.nextpage.apk ${{ secrets.RELEASE_KEYSTORE_ALIAS }}
+
+      - name: Upload Android Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifacts-android
+          path: |
+            src\NextPage\bin\${{ env.CONFIGURATION }}\net8.0-android\publish\uk.co.burkus.nextpage-Signed.apk
+
+      - name: Create tag
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const tagName = `android/${{ env.VERSIONNUMBER }}`;
+            const ref = `refs/tags/${tagName}`;
+
+            // create a new tag
+            await github.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: ref,
+              sha: context.sha
+            });
