@@ -15,7 +15,7 @@ public static class BookMapper
             Author = bookViewModel.Author,
             Description = bookViewModel.Description,
             Genre = bookViewModel.Genre.Value,
-            Year = bookViewModel.Year,
+            Year = bookViewModel.Year.Value,
         };
     }
 
@@ -28,7 +28,7 @@ public static class BookMapper
             Author = bookModel.Author,
             Description = bookModel.Description,
             Genre = DropdownOptions.Genres.Find(x => x.Value == bookModel.Genre),
-            Year = bookModel.Year,
+            YearAsString = bookModel.Year.ToString(),
         };
     }
 }

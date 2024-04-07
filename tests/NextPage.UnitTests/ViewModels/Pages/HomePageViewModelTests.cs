@@ -334,28 +334,28 @@ public class HomePageViewModelTests
                 {
                     Title = "The Very Hungry Caterpillar",
                     Author = "Eric Carle",
-                    Year = 2000,
+                    YearAsString = "2000",
                     Genre = DropdownOptions.Genres.Find(x => x.Value == GenreEnum.SelfHelp),
                 },
                 new BookViewModel
                 {
                     Title = "If You Give A Mouse A Cookie",
                     Author = "Laura Joffe Numeroff",
-                    Year = 1992,
+                    YearAsString = "1992",
                     Genre = DropdownOptions.Genres.Find(x => x.Value == GenreEnum.Cooking),
                 },
                 new BookViewModel
                 {
                     Title = "I Spy",
                     Author = "Walter Wick and Jean Marzollo",
-                    Year = 1990,
+                    YearAsString = "1990",
                     Genre = DropdownOptions.Genres.Find(x => x.Value == GenreEnum.Adventure),
                 },
                 new BookViewModel
                 {
                     Title = "Captain Underpants",
                     Author = "Dav Pilkey",
-                    Year = 1997,
+                    YearAsString = "1997",
                     Genre = DropdownOptions.Genres.Find(x => x.Value == GenreEnum.Adventure),
                 },
             });

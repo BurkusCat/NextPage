@@ -206,6 +206,11 @@
 </value>
     <comment>Translate</comment>
   </data>
+  <data name="EmptyYearValidationMessage" xml:space="preserve">
+    <value>- The book must have a Year
+</value>
+    <comment>Translate</comment>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
     <comment>Translate</comment>

@@ -78,7 +78,7 @@
                     MaxLength="4"
                     ReturnType="Next"
                     SemanticProperties.Description="{Binding Source={x:Reference yearLabel}, Path=Text}"
-                    Text="{Binding Book.Year}" />
+                    Text="{Binding Book.YearAsString}" />
                 <Label
                     IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
                     Text="{Binding Book.Year}" />

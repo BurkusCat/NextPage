@@ -55,7 +55,7 @@ public class BookPageViewModelTests
             Title = "Llama",
             Author = "Ronan Burke",
             Description = "A book about llamas",
-            Year = 2012,
+            YearAsString = "2012",
             Genre = DropdownOptions.Genres.Find(x => x.Value == GenreEnum.Comedy),
         };
 
@@ -73,6 +73,7 @@ public class BookPageViewModelTests
         Assert.Equal("Ronan Burke", viewModel.Book.Author);
         Assert.Equal("A book about llamas", viewModel.Book.Description);
         Assert.Equal(DropdownOptions.Genres.Find(x => x.Value == GenreEnum.Comedy), viewModel.Book.Genre);
+        Assert.Equal("2012", viewModel.Book.YearAsString);
         Assert.Equal(2012, viewModel.Book.Year);
         Assert.False(viewModel.IsEditing);
 
@@ -237,7 +238,10 @@ public class BookPageViewModelTests
     {
         // arrange
         var viewModel = ViewModel;
-        viewModel.Book = new BookViewModel();
+        viewModel.Book = new BookViewModel
+        {
+            YearAsString = "20000",
+        };
 
         mockDialogService
             .SetupSequence(x => x.DisplayAlert(
@@ -262,7 +266,7 @@ public class BookPageViewModelTests
         viewModel.Book = new BookViewModel
         {
             Author = "Ronan Burke",
-            Year = 1853,
+            YearAsString = "1853",
             Genre = DropdownOptions.Genres.Find(x => x.Value == GenreEnum.Romance),
         };
 
@@ -270,6 +274,33 @@ public class BookPageViewModelTests
             .SetupSequence(x => x.DisplayAlert(
                 "Error",
                 "There is a problem with the book you tried to save. Please correct the following error(s):\r\n\r\n- The book must have a Title\r\n",
+                "OK",
+                It.IsAny<FlowDirection>()))
+            .Returns(Task.CompletedTask);
+
+        // act
+        viewModel.SaveCommand.Execute(null);
+
+        // assert
+        VerifyAll();
+    }
+
+    [Fact]
+    public void SaveCommand_WhenBookHasMissingYear_ShowsYearRequiredMessage()
+    {
+        // arrange
+        var viewModel = ViewModel;
+        viewModel.Book = new BookViewModel
+        {
+            Title = "Les Mis",
+            Author = "Ronan Burke",
+            Genre = DropdownOptions.Genres.Find(x => x.Value == GenreEnum.Romance),
+        };
+
+        mockDialogService
+            .SetupSequence(x => x.DisplayAlert(
+                "Error",
+                "There is a problem with the book you tried to save. Please correct the following error(s):\r\n\r\n- The book must have a Year\r\n",
                 "OK",
                 It.IsAny<FlowDirection>()))
             .Returns(Task.CompletedTask);
@@ -290,7 +321,7 @@ public class BookPageViewModelTests
         {
             Title = "Trains",
             Author = "Ronan Burke",
-            Year = 1853,
+            YearAsString = "1853",
             Genre = DropdownOptions.Genres.Find(x => x.Value == GenreEnum.Romance),
         };
         viewModel.Book = book;
@@ -319,7 +350,7 @@ public class BookPageViewModelTests
             Id = new Guid("5e5669af-8c8b-4154-a2d6-122cd44d546e"),
             Title = "Trains",
             Author = "Ronan Burke",
-            Year = 1853,
+            YearAsString = "1853",
             Genre = DropdownOptions.Genres.Find(x => x.Value == GenreEnum.Romance),
         };
         viewModel.Book = book;

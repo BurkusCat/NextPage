@@ -16,7 +16,7 @@ public class BookMapperTests
             Title = "Science Book",
             Author = "Claire Lee",
             Description = "A book description",
-            Year = 1990,
+            YearAsString = "1990",
             Genre = DropdownOptions.Genres.Find(x => x.Value == GenreEnum.Academic),
         };
 

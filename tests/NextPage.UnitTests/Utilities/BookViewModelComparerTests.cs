@@ -10,21 +10,21 @@ public class BookViewModelComparerTests
     {
         Title = "Metallic",
         Author = "Zed",
-        Year = 1907,
+        YearAsString = "1907",
     };
 
     private static BookViewModel titleAAuthorBYearC = new BookViewModel
     {
         Title = "Apples",
         Author = "Michael",
-        Year = 2024,
+        YearAsString = "2024",
     };
 
     private static BookViewModel titleCAuthorAYearB = new BookViewModel
     {
         Title = "X-ray",
         Author = "Andrew",
-        Year = 1990,
+        YearAsString = "1990",
     };
 
     private List<BookViewModel> testViewModels = new List<BookViewModel>

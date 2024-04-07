@@ -178,7 +178,11 @@ public partial class BookPageViewModel : ViewModelBase
             errorString += Resources.EmptyGenreValidationMessage;
         }
 
-        if (Book.Year < 1 || Book.Year > 9999)
+        if (Book.Year == null)
+        {
+            errorString += Resources.EmptyYearValidationMessage;
+        } 
+        else if (Book.Year < 1 || Book.Year > 9999)
         {
             errorString += Resources.InvalidYearValidationMessage;
         }
@@ -192,7 +196,7 @@ public partial class BookPageViewModel : ViewModelBase
         Book = new BookViewModel
         {
             // default year to now
-            Year = DateTime.Now.Year,
+            YearAsString = DateTime.Now.Year.ToString(),
         };
 
         // allow user to immediately start entering data

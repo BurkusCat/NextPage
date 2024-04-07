@@ -255,6 +255,16 @@ namespace NextPage.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to - The book must have a Year
+        ///.
+        /// </summary>
+        internal static string EmptyYearValidationMessage {
+            get {
+                return ResourceManager.GetString("EmptyYearValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string Error {

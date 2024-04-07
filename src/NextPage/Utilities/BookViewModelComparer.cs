@@ -23,7 +23,7 @@ public class BookViewModelComparer : IComparer<BookViewModel>
         }
         else if (SortType == BookSortTypeEnum.Year)
         {
-            comparisonResult = Comparer<int>.Default.Compare(x.Year, y.Year);
+            comparisonResult = Comparer<int>.Default.Compare(x.Year.Value, y.Year.Value);
         }
 
         // the sort order may be used to flip the comparison result
