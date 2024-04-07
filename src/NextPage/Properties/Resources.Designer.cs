@@ -318,7 +318,7 @@ namespace NextPage.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Crime and myserty.
+        ///   Looks up a localized string similar to Crime and mystery.
         /// </summary>
         internal static string GenreCrimeAndMystery {
             get {
