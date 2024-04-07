@@ -7,11 +7,13 @@ namespace NextPage.UnitTests.ViewModels;
 public class SortPageViewModelTests
 {
     private readonly Mock<INavigationService> mockNavigationService = new Mock<INavigationService>(MockBehavior.Strict);
+    private readonly Mock<ISemanticScreenReader> mockSemanticReaderService = new Mock<ISemanticScreenReader>(MockBehavior.Strict);
 
     public SortPageViewModel ViewModel
     {
         get => new SortPageViewModel(
-            mockNavigationService.Object);
+            mockNavigationService.Object,
+            mockSemanticReaderService.Object);
     }
 
     [Fact]
@@ -29,12 +31,13 @@ public class SortPageViewModelTests
     }
 
     [Theory]
-    [InlineData(BookSortTypeEnum.Title, SortOrderEnum.Ascending)]
-    [InlineData(BookSortTypeEnum.Author, SortOrderEnum.Descending)]
-    [InlineData(null, null)]
+    [InlineData(BookSortTypeEnum.Title, SortOrderEnum.Ascending, "Current sort type is: Title, current sort order is: Ascending.")]
+    [InlineData(BookSortTypeEnum.Author, SortOrderEnum.Descending, "Current sort type is: Author, current sort order is: Descending.")]
+    [InlineData(null, null, "No sort currently selected")]
     public async Task OnNavigatedTo_WhenExistingSortSelected_SetsInitialSort(
         BookSortTypeEnum? sortType,
-        SortOrderEnum? sortOrder)
+        SortOrderEnum? sortOrder,
+        string expectedSemanticAnnouncement)
     {
         // Arrange
         var viewModel = ViewModel;
@@ -44,6 +47,8 @@ public class SortPageViewModelTests
             { "SortType", sortType },
             { "SortOrder", sortOrder },
         };
+
+        mockSemanticReaderService.SetupSequence(x => x.Announce(expectedSemanticAnnouncement));
 
         // Act
         await viewModel.OnNavigatedTo(parameters);
@@ -85,6 +90,7 @@ public class SortPageViewModelTests
     {
         // Arrange
         var viewModel = ViewModel;
+        mockSemanticReaderService.SetupSequence(x => x.Announce("Current sort type is: Title, current sort order is: Ascending."));
 
         // Act
         viewModel.SelectSortOptionCommand.Execute(viewModel.SortOptions
@@ -105,6 +111,8 @@ public class SortPageViewModelTests
         viewModel.SortType = BookSortTypeEnum.Title;
         viewModel.SortOrder = SortOrderEnum.Ascending;
 
+        mockSemanticReaderService.SetupSequence(x => x.Announce("Current sort type is: Title, current sort order is: Descending."));
+
         // Act
         viewModel.SelectSortOptionCommand.Execute(viewModel.SortOptions
             .Find(option => option.Value == BookSortTypeEnum.Title));
@@ -123,6 +131,8 @@ public class SortPageViewModelTests
         var viewModel = ViewModel;
         viewModel.SortType = BookSortTypeEnum.Title;
         viewModel.SortOrder = SortOrderEnum.Descending;
+
+        mockSemanticReaderService.SetupSequence(x => x.Announce("No sort currently selected"));
 
         // Act
         viewModel.SelectSortOptionCommand.Execute(viewModel.SortOptions
@@ -143,6 +153,8 @@ public class SortPageViewModelTests
         viewModel.SortType = BookSortTypeEnum.Title;
         viewModel.SortOrder = SortOrderEnum.Descending;
 
+        mockSemanticReaderService.SetupSequence(x => x.Announce("Current sort type is: Author, current sort order is: Ascending."));
+
         // Act
         viewModel.SelectSortOptionCommand.Execute(viewModel.SortOptions
             .Find(option => option.Value == BookSortTypeEnum.Author));
@@ -157,5 +169,6 @@ public class SortPageViewModelTests
     private void VerifyAll()
     {
         mockNavigationService.VerifyAll();
+        mockSemanticReaderService.VerifyAll();
     }
 }
