@@ -26,11 +26,19 @@ The pages use dependency injection to bring in `Services` for navigation, saving
 
 The page UI is built using XAML. Pages use [compiled bindings](https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/data-binding/compiled-bindings?view=net-maui-8.0) to improve performance and to give compile-time resolving of bindings. Most UI text is stored within `Resources.resx` to allow for string reuse, separation from the code, and to make it easier to localize the application in the future. The app has been tested with the Android TalkBack screen reader and at higher display scale/font sizes to ensure it is accessible.
 
-To improve the user experience, this project includes: validation messages, swipe to delete + delete on the book page itself, as-you-type searching, and sorting.
+To improve the user experience, this project includes: validation messages, swipe to delete + delete on the book page itself, as-you-type searching, and sorting. The app supports dark and light themes.
 
 The unit test project uses strict mocks to ensure that only expected dependencies are ran with the correct parameters. This makes sure that no unexpected code/services are invoked.
 
 The database used is Entity Framework Core + SQLite. SQLite is a popular choice for mobile databases and EFCore is a powerful ORM layer that has great features like data migrations.
+
+| Home page | Add book page | Edit book page | View book page |
+| - | - | - | - |
+| ![Homepage](art/homepage.jpg) | ![Add book page](art/addbook.jpg) | ![Edit book page](art/editbook.jpg) | ![View book page](art/viewbook.jpg) |
+
+| Sort page | Search & sort | Validation error | Large font size |
+| - | - | - | - |
+| ![Sort page](art/sort.jpg) | ![Search and sort](art/sortfilter.jpg) | ![Validation error](art/validation.jpg) | ![Large font size](art/largefont.jpg) |
 
 ## EFCore Migrations
 
