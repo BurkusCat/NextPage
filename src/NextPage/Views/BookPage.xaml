@@ -79,7 +79,7 @@
                     Style="{StaticResource PropertyLabelStyle}"
                     Text="{x:Static resources:Resources.Description}" />
                 <Editor
-                    HeightRequest="100"
+                    AutoSize="TextChanges"
                     IsVisible="{Binding IsEditing}"
                     MaxLength="750"
                     Text="{Binding Book.Description}" />
