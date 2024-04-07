@@ -146,6 +146,8 @@ public class HomePageViewModelTests
     }
 
     [Theory]
+    [InlineData("2000", 1)]
+    [InlineData("cOoKi", 1)]
     [InlineData("hungry", 1)]
     [InlineData("sPy", 1)]
     [InlineData("i", 4)]
@@ -332,7 +334,7 @@ public class HomePageViewModelTests
                 {
                     Title = "The Very Hungry Caterpillar",
                     Author = "Eric Carle",
-                    Year = 1999,
+                    Year = 2000,
                     Genre = DropdownOptions.Genres.Find(x => x.Value == GenreEnum.SelfHelp),
                 },
                 new BookViewModel

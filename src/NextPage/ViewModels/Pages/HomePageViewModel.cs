@@ -180,7 +180,9 @@ public partial class HomePageViewModel : ViewModelBase
                 .Where(book =>
                     book.Title?.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0 ||
                     book.Author?.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                    book.Description?.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0);
+                    book.Description?.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    book.Year.ToString().Contains(SearchQuery) ||
+                    book.Genre?.Value.ToString().IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0);
         }
 
         // 2. Sort
