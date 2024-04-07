@@ -30,7 +30,7 @@ public partial class HomePageViewModel : ViewModelBase
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsFilteringOrSorting))]
-    private string searchQuery;
+    private string searchQuery = string.Empty;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsFilteringOrSorting))]
@@ -178,9 +178,9 @@ public partial class HomePageViewModel : ViewModelBase
             // filter results with a case insensitive search
             filteredBooks = filteredBooks
                 .Where(book =>
-                    book.Title.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                    book.Author.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                    book.Description.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0);
+                    book.Title?.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    book.Author?.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    book.Description?.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0);
         }
 
         // 2. Sort
