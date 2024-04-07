@@ -41,7 +41,7 @@ jobs:
 
       # https://docs.microsoft.com/en-us/dotnet/maui/android/deployment/overview
       - name: Build Android App
-        run: dotnet publish src/NextPage/NextPage.csproj -f:net8.0-android -c:${{ env.CONFIGURATION }} --no-restore /p:AndroidPackageFormat="apk"
+        run: dotnet publish src/NextPage/NextPage.csproj -f:net8.0-android -c:${{ env.CONFIGURATION }} --no-restore /p:AndroidPackageFormat="aab"
 
       # Store Android Signing Keystore and password in Secrets using base64 encoding
       # openssl enc -base64 -a -in nextpage.jks -out nextpage_base64.txt
@@ -58,14 +58,14 @@ jobs:
         shell: bash
         run: |
           cd src/Nextpage
-          jarsigner -keystore android/nextpage.decrypted.jks -storepass "${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" -signedjar bin/${{ env.CONFIGURATION }}/net8.0-android/publish/uk.co.burkus.nextpage-Signed.apk bin/${{ env.CONFIGURATION }}/net8.0-android/publish/uk.co.burkus.nextpage.apk ${{ secrets.RELEASE_KEYSTORE_ALIAS }}
+          jarsigner -keystore android/nextpage.decrypted.jks -storepass "${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" -signedjar bin/${{ env.CONFIGURATION }}/net8.0-android/publish/uk.co.burkus.nextpage-Signed.aab bin/${{ env.CONFIGURATION }}/net8.0-android/publish/uk.co.burkus.nextpage.aab ${{ secrets.RELEASE_KEYSTORE_ALIAS }}
 
       - name: Upload Android Artifact
         uses: actions/upload-artifact@v4
         with:
           name: artifacts-android
           path: |
-            src\NextPage\bin\${{ env.CONFIGURATION }}\net8.0-android\publish\uk.co.burkus.nextpage-Signed.apk
+            src\NextPage\bin\${{ env.CONFIGURATION }}\net8.0-android\publish\uk.co.burkus.nextpage-Signed.aab
 
       - name: Create tag
         uses: actions/github-script@v4
