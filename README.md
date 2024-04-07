@@ -24,16 +24,13 @@ The business logic for the pages is written within `ViewModels`. Properties are 
 
 The pages use dependency injection to bring in `Services` for navigation, saving/loading data, and showing alert messages.
 
-The page UI is built using XAML. Pages use [compiled bindings](https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/data-binding/compiled-bindings?view=net-maui-8.0) to improve performance and to give compile-time resolving of bindings. Most UI text is stored within `Resources.resx` to allow for string reuse, separation from the code, and to make it easier to localize the application in the future. The app has been tested with the Android TalkBack screenreader and at higher display scale/font sizes to ensure it is accessible.
+The page UI is built using XAML. Pages use [compiled bindings](https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/data-binding/compiled-bindings?view=net-maui-8.0) to improve performance and to give compile-time resolving of bindings. Most UI text is stored within `Resources.resx` to allow for string reuse, separation from the code, and to make it easier to localize the application in the future. The app has been tested with the Android TalkBack screen reader and at higher display scale/font sizes to ensure it is accessible.
 
-To improve the user experience, this project includes: validation messages, swipe to delete + delete on the book page itself, searching, and sorting.
+To improve the user experience, this project includes: validation messages, swipe to delete + delete on the book page itself, as-you-type searching, and sorting.
 
 The unit test project uses strict mocks to ensure that only expected dependencies are ran with the correct parameters. This makes sure that no unexpected code/services are invoked.
 
-The database used is Entity Framework Core + SQLite. SQLite is a popular choice for mobile databases and EFCore is a powerful ORM layer that gives great support for things like data migrations.
-
-Primary: #5da2ff
-Complementary: #ffb95d
+The database used is Entity Framework Core + SQLite. SQLite is a popular choice for mobile databases and EFCore is a powerful ORM layer that has great features like data migrations.
 
 ## EFCore Migrations
 
@@ -50,7 +47,11 @@ Complementary: #ffb95d
 4. Run `Add-Migration DescriptiveMigrationName`
 
 ## Pipelines
+In the GitHub repository, ["Workflow permissions"](https://docs.github.com/actions/reference/authentication-in-a-workflow#modifying-the-permissions-for-the-github_token) needs set to "Read and write permissions" to allow releases to be tagged correctly. Set "
+Allow GitHub Actions to create and approve pull requests" to `true`.
+
 The project contains two GitHub Actions pipelines, one for running the unit tests and one for building a release version of the app. The following secret variables must be setup:
 
-
-Base 64 encoded keystore for GitHub action: 
+- RELEASE_KEYSTORE
+- RELEASE_KEYSTORE_ALIAS
+- RELEASE_KEYSTORE_PASSWORD
