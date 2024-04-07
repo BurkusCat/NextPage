@@ -20,53 +20,57 @@
         <converters:SortOrderToSortImageConverter x:Key="SortOrderToSortImageConverter" />
     </ContentPage.Resources>
     <AbsoluteLayout>
-        <VerticalStackLayout
+        <Grid
             AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All">
-            <Grid
-                ColumnDefinitions="Auto,*,Auto"
-                RowDefinitions="*,*,Auto">
-                <Image
-                    Grid.Row="0"
-                    Grid.RowSpan="2"
-                    Grid.Column="0"
-                    Margin="{StaticResource StandardThicknessUnit}"
-                    SemanticProperties.Description="{x:Static resources:Resources.SemanticDescriptionLogo}"
-                    Source="{AppThemeBinding Light='logolight.png',
-                                             Dark='logo.png'}"
-                    WidthRequest="70" />
-                <Label
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Margin="{StaticResource StandardThicknessUnit}"
-                    LineBreakMode="WordWrap"
-                    Text="{x:Static resources:Resources.TagLine}"
-                    VerticalOptions="Center" />
+            AbsoluteLayout.LayoutFlags="All"
+            ColumnDefinitions="Auto,*,Auto"
+            RowDefinitions="Auto,Auto,Auto,*">
+            <Image
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Margin="{StaticResource StandardThicknessUnit}"
+                SemanticProperties.Description="{x:Static resources:Resources.SemanticDescriptionLogo}"
+                Source="{AppThemeBinding Light='logolight.png',
+                                         Dark='logo.png'}"
+                WidthRequest="70" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Margin="{StaticResource StandardThicknessUnit}"
+                LineBreakMode="WordWrap"
+                Text="{x:Static resources:Resources.TagLine}"
+                VerticalOptions="Center" />
 
-                <views:SearchBox
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    SearchCommand="{Binding SearchCommand}"
-                    Text="{Binding SearchQuery}" />
-                <views:IconButton
-                    Grid.Row="1"
-                    Grid.Column="2"
-                    Command="{Binding SortCommand}"
-                    IconSource="{Binding SortOrder, Converter={StaticResource SortOrderToSortImageConverter}}"
-                    SemanticProperties.Description="{x:Static resources:Resources.SemanticDescriptionSortButton}" />
+            <views:SearchBox
+                Grid.Row="1"
+                Grid.Column="1"
+                SearchCommand="{Binding SearchCommand}"
+                Text="{Binding SearchQuery}" />
+            <views:IconButton
+                Grid.Row="1"
+                Grid.Column="2"
+                Command="{Binding SortCommand}"
+                IconSource="{Binding SortOrder, Converter={StaticResource SortOrderToSortImageConverter}}"
+                SemanticProperties.Description="{x:Static resources:Resources.SemanticDescriptionSortButton}" />
 
-                <Button
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
-                    Margin="{StaticResource SmallThicknessUnit}"
-                    Command="{Binding ClearFiltersAndSortCommand}"
-                    HorizontalOptions="End"
-                    IsVisible="{Binding IsFilteringOrSorting}"
-                    Text="{x:Static resources:Resources.ButtonClearFiltersAndSort}" />
-            </Grid>
-            <CollectionView ItemsSource="{Binding FilteredBooks}">
+            <Button
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Margin="{StaticResource SmallThicknessUnit}"
+                Command="{Binding ClearFiltersAndSortCommand}"
+                HorizontalOptions="End"
+                IsVisible="{Binding IsFilteringOrSorting}"
+                Text="{x:Static resources:Resources.ButtonClearFiltersAndSort}" />
+
+
+            <CollectionView
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                ItemsSource="{Binding FilteredBooks}">
                 <CollectionView.EmptyView>
                     <VerticalStackLayout>
                         <ActivityIndicator
@@ -146,7 +150,7 @@
                     <VerticalStackLayout HeightRequest="85" />
                 </CollectionView.Footer>
             </CollectionView>
-        </VerticalStackLayout>
+        </Grid>
 
         <!--  Floating action button (FAB)  -->
         <Border
