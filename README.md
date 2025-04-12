@@ -1,6 +1,8 @@
 # Next Page
 Next Page is a Personal Book Library application developed with .NET MAUI and C#. This application was written by Ronan Burke.
 
+This is a sample/reference application showcasing some best practices in .NET MAUI development.
+
 ## Prerequisites
 - Visual Studio 2022 17.9.4
   - .NET MAUI workload
